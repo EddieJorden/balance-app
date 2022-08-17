@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const UserNameFetch = () => {
-  const queryParams = "not eddie";
+  const queryParams = "Benny";
   const url = `http://localhost:8888/getusername?enteredName=${queryParams}`;
   const [name, setName] = useState("default name in state");
   console.log("name in state", name);
@@ -16,12 +16,11 @@ const UserNameFetch = () => {
         throw response;
       })
       .then((data) => {
+        console.log("data", data);
         setName(data.userName);
-      })
-      .then((error) => {
-        console.error("error fetching data ", error);
+        console.log(name);
       });
-  }, [name]);
+  }, []);
 
   return <div>{name}</div>;
 };
