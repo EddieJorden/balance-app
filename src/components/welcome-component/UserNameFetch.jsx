@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 const UserNameFetch = () => {
-  const url = "http://localhost:8888/getusername";
+  const queryParams = "benjamin";
+  const url = `http://localhost:8888/getusername?enteredName=${queryParams}`;
   const [name, setName] = useState("default name in state");
   console.log(name);
 
