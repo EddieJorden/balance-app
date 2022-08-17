@@ -3,19 +3,29 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "userName",
   initialState: {
-    name: "no name selected",
+    userInputName: "no name selected",
+    userProfile: {},
   },
   reducers: {
     updateUserName(state, action) {
-      state.name = action.payload;
+      state.userInputName = action.payload;
+    },
+    updateUserProfile(state, action) {
+      state.userProfile = {
+        name: action.payload.userName,
+      };
     },
   },
 });
 
-export const { updateUserName } = userSlice.actions;
+export const { updateUserName, updateUserProfile } = userSlice.actions;
 
 export const selectUserName = (state) => {
-  return state.userSlice.name;
+  return state.userSlice.userInputName;
+};
+
+export const selectUserProfile = (state) => {
+  return state.userslice.userProfile;
 };
 
 export default userSlice.reducer;
