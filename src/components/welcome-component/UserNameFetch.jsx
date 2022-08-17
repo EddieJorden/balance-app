@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUserName } from "../userSlice/userSlice";
-import { updateUserName } from "../userSlice/userSlice";
+import { updateUserProfile } from "../userSlice/userSlice";
 
 const UserNameFetch = () => {
   const userName = useSelector(selectUserName);
@@ -22,8 +22,7 @@ const UserNameFetch = () => {
       })
       .then((data) => {
         console.log("data", data);
-
-        dispatch(updateUserName(data.userName));
+        dispatch(updateUserProfile(data));
         console.log(name);
       });
   }, [userName]);
