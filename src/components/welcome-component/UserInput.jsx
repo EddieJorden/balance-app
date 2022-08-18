@@ -4,11 +4,16 @@ import { debounce } from "lodash";
 import SubmitButton from "../SubmitButton";
 
 const UserInput = () => {
-  const [name, setName] = useState("user name");
+  const [name, setName] = useState("name");
+  const [email, setEmail] = useState("email");
+  console.log({ name: name, email: email });
 
-  const handleChange = (e) => {
+  const updateName = (e) => {
     setName(e.target.value);
-    // dispatch(updateUserName(e.target.value));
+  };
+
+  const updateEmail = (e) => {
+    setEmail(e.target.value);
   };
 
   const dataToUpdate = name;
@@ -19,7 +24,14 @@ const UserInput = () => {
         type="text"
         placeholder={name}
         onChange={debounce((e) => {
-          handleChange(e);
+          updateName(e);
+        }, 1000)}
+      />
+      <input
+        type="text"
+        placeholder={email}
+        onChange={debounce((e) => {
+          updateEmail(e);
         }, 1000)}
       />
       <div>
