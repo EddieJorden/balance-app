@@ -16,7 +16,7 @@ const UserInput = () => {
     setEmail(e.target.value);
   };
 
-  const dataToUpdate = name;
+  const dataToUpdate = { name, email };
 
   return (
     <div>
