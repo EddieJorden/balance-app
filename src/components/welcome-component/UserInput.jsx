@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { debounce } from "lodash";
-import { useDispatch } from "react-redux";
-import { updateUserName } from "../userSlice/userSlice";
+
+import SubmitButton from "../SubmitButton";
 
 const UserInput = () => {
   const [name, setName] = useState("user name");
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setName(e.target.value);
-    dispatch(updateUserName(e.target.value));
+    // dispatch(updateUserName(e.target.value));
   };
+
+  const dataToUpdate = name;
 
   return (
     <div>
@@ -21,6 +22,9 @@ const UserInput = () => {
           handleChange(e);
         }, 1000)}
       />
+      <div>
+        <SubmitButton dataToUpdate={dataToUpdate} />
+      </div>
     </div>
   );
 };
