@@ -7,7 +7,7 @@ const UserNameFetch = () => {
   const userName = useSelector(selectUserName);
   console.log("userName in usernamefetch", userName);
   const queryParams = userName;
-  const url = `http://localhost:8888/getusername?enteredName=${queryParams}`;
+  const url = `http://0.0.0.0:8888/getusername?enteredName=${queryParams}`;
 
   const dispatch = useDispatch();
 
