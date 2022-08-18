@@ -4,15 +4,21 @@ export const userSlice = createSlice({
   name: "userName",
   initialState: {
     userInputName: "no name selected",
-    userProfile: {},
+    userProfile: {
+      name: "",
+      email: "",
+    },
   },
   reducers: {
     updateUserName(state, action) {
       state.userInputName = action.payload;
     },
     updateUserProfile(state, action) {
+      const { name, email } = action.payload;
+
       state.userProfile = {
-        name: action.payload.userName,
+        name,
+        email,
       };
     },
   },
@@ -25,7 +31,7 @@ export const selectUserName = (state) => {
 };
 
 export const selectUserProfile = (state) => {
-  return state.userslice.userProfile;
+  return state.userSlice.userProfile;
 };
 
 export default userSlice.reducer;

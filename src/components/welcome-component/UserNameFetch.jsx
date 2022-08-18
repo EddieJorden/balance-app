@@ -7,7 +7,7 @@ const UserNameFetch = () => {
   const userName = useSelector(selectUserName);
   console.log("userName in usernamefetch", userName);
   const queryParams = userName;
-  const url = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/getusername?enteredName=${queryParams}`;
+  const url = `http://localhost:8888/getusername?enteredName=${queryParams}`;
 
   const dispatch = useDispatch();
 
