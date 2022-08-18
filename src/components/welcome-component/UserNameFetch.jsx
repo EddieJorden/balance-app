@@ -27,7 +27,7 @@ const UserNameFetch = () => {
       });
   }, [userName]);
 
-  return <div>{name}</div>;
+  return <div>{userName}</div>;
 };
 
 export default UserNameFetch;
