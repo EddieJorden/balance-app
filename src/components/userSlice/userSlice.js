@@ -43,7 +43,15 @@ export const selectUserEmail = (state) => {
 };
 
 export const selectFetchedUserProfile = (state) => {
-  return state.userSlice.userProfile;
+  return state.userSlice.fetchedUserProfile;
+};
+
+export const selectFetchedUserProfileName = (state) => {
+  return state.userSlice.fetchedUserProfile.userName;
+};
+
+export const selectFetchedUserProfileEmail = (state) => {
+  return state.userSlice.fetchedUserProfile.userEmail;
 };
 
 export default userSlice.reducer;
