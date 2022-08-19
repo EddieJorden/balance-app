@@ -14,7 +14,6 @@ const SubmitButton = (dataToUpdate) => {
 
   const handleClick = () => {
     dispatch(updateUserName(dataToUpdate.dataToUpdate.name));
-    console.log("dataToUpdate", dataToUpdate.dataToUpdate);
     dispatch(updateUserEmail(dataToUpdate.dataToUpdate.email));
   };
 

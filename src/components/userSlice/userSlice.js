@@ -3,8 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
   name: "userName",
   initialState: {
+    //username and email from user input
     userInputName: "no name selected",
     userInputEmail: "no email entered",
+    //profile fetched from server
     fetchedUserProfile: {
       userName: "",
       userEmail: "",
@@ -19,7 +21,6 @@ export const userSlice = createSlice({
     },
     updateFetchedUserProfile(state, action) {
       const { userName, userEmail } = action.payload;
-
       state.fetchedUserProfile = {
         userName,
         userEmail,
@@ -28,9 +29,11 @@ export const userSlice = createSlice({
   },
 });
 
+//action creators
 export const { updateUserName, updateUserEmail, updateFetchedUserProfile } =
   userSlice.actions;
 
+//selectors
 export const selectUserName = (state) => {
   return state.userSlice.userInputName;
 };

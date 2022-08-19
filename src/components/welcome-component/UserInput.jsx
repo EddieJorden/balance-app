@@ -6,7 +6,8 @@ import SubmitButton from "../SubmitButton";
 const UserInput = () => {
   const [name, setName] = useState("name");
   const [email, setEmail] = useState("email");
-  console.log("entered in local state", { name: name, email: email });
+  console.log({ name });
+  console.log({ email });
 
   const updateName = (e) => {
     setName(e.target.value);
