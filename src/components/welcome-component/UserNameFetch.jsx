@@ -24,7 +24,7 @@ const UserNameFetch = () => {
       })
       .then((data) => {
         dispatch(updateFetchedUserProfile(data));
-        console.log({ "fetched profile": data });
+        console.log(`fetched profile":`, { [data.userName]: data });
       });
   }, [enteredName, enteredEmail]);
 };
