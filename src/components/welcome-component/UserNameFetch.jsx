@@ -9,12 +9,13 @@ import {
 const UserNameFetch = () => {
   const enteredName = useSelector(selectUserName);
   const enteredEmail = useSelector(selectUserEmail);
-  const url = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
+  const localhost = `http://localhost:8888/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
+  // const liveUrl = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(url)
+    fetch(localhost)
       .then((response) => {
         if (response.ok) {
           return response.json();

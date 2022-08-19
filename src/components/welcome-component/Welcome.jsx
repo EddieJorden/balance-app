@@ -1,19 +1,20 @@
 import UserNameFetch from "./UserNameFetch";
 import UserInput from "../welcome-component/UserInput";
-import StyledContainer from "../ComponentContainer";
+
+import UserProfile from "./UserProfile";
 
 const Welcome = () => {
   return (
     <div>
-      <StyledContainer>
-        Welcome
-        <div>
-          <UserNameFetch />
-        </div>
-        <div>
-          <UserInput />
-        </div>
-      </StyledContainer>
+      <div>
+        <UserNameFetch />
+      </div>
+      <div>
+        <UserProfile />
+      </div>
+      <div>
+        <UserInput />
+      </div>
     </div>
   );
 };

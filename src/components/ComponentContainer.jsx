@@ -7,6 +7,7 @@ const StyledContainer = styled.div`
   font-weight: heavy;
   width: 300px;
   height: 180px;
+  margin: 73px;
 `;
 
 export default StyledContainer;
