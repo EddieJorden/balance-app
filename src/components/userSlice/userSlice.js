@@ -4,33 +4,42 @@ export const userSlice = createSlice({
   name: "userName",
   initialState: {
     userInputName: "no name selected",
-    userProfile: {
-      name: "",
-      email: "",
+    userInputEmail: "no email entered",
+    fetchedUserProfile: {
+      userName: "",
+      userEmail: "",
     },
   },
   reducers: {
     updateUserName(state, action) {
       state.userInputName = action.payload;
     },
-    updateUserProfile(state, action) {
-      const { name, email } = action.payload;
+    updateUserEmail(state, action) {
+      state.userInputEmail = action.payload;
+    },
+    updateFetchedUserProfile(state, action) {
+      const { userName, userEmail } = action.payload;
 
-      state.userProfile = {
-        name,
-        email,
+      state.fetchedUserProfile = {
+        userName,
+        userEmail,
       };
     },
   },
 });
 
-export const { updateUserName, updateUserProfile } = userSlice.actions;
+export const { updateUserName, updateUserEmail, updateFetchedUserProfile } =
+  userSlice.actions;
 
 export const selectUserName = (state) => {
   return state.userSlice.userInputName;
 };
 
-export const selectUserProfile = (state) => {
+export const selectUserEmail = (state) => {
+  return state.userSlice.userInputEmail;
+};
+
+export const selectFetchedUserProfile = (state) => {
   return state.userSlice.userProfile;
 };
 

@@ -1,13 +1,16 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectUserName } from "../userSlice/userSlice";
-import { updateUserProfile } from "../userSlice/userSlice";
+import {
+  selectUserEmail,
+  selectUserName,
+  updateFetchedUserProfile,
+} from "../userSlice/userSlice";
 
 const UserNameFetch = () => {
-  const userName = useSelector(selectUserName);
-  console.log("userName in usernamefetch", userName);
-  const queryParams = userName;
-  const url = `http://localhost:8888/getusername?enteredName=${queryParams}`;
+  const enteredName = useSelector(selectUserName);
+  const enteredEmail = useSelector(selectUserEmail);
+  console.log({ enteredEmail });
+  const url = `http://localhost:8888/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
 
   const dispatch = useDispatch();
 
@@ -22,12 +25,10 @@ const UserNameFetch = () => {
       })
       .then((data) => {
         console.log("data", data);
-        dispatch(updateUserProfile(data));
-        console.log(name);
+        dispatch(updateFetchedUserProfile(data));
+        console.log("userProfile fetched and dispatched via updateuserprofile");
       });
-  }, [userName]);
-
-  return <div>{userName}</div>;
+  }, [enteredName, enteredEmail]);
 };
 
 export default UserNameFetch;

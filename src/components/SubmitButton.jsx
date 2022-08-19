@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { updateUserProfile } from "./userSlice/userSlice";
+import { updateUserName, updateUserEmail } from "./userSlice/userSlice";
 import styled from "styled-components";
 
 const StyledSubmitButton = styled.div`
@@ -13,8 +13,9 @@ const SubmitButton = (dataToUpdate) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(updateUserProfile(dataToUpdate.dataToUpdate));
+    dispatch(updateUserName(dataToUpdate.dataToUpdate.name));
     console.log("dataToUpdate", dataToUpdate.dataToUpdate);
+    dispatch(updateUserEmail(dataToUpdate.dataToUpdate.email));
   };
 
   return <StyledSubmitButton onClick={handleClick}>Submit</StyledSubmitButton>;
