@@ -4,8 +4,8 @@ export const userSlice = createSlice({
   name: "userName",
   initialState: {
     //username and email from user input
-    userInputName: "no name selected",
-    userInputEmail: "no email entered",
+    userInputName: "user name",
+    userInputEmail: "email@mail.com",
     //profile fetched from server
     fetchedUserProfile: {
       userName: "",

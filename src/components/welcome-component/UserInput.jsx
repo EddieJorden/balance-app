@@ -4,8 +4,10 @@ import { debounce } from "lodash";
 import SubmitButton from "../SubmitButton";
 
 const UserInput = () => {
-  const [name, setName] = useState("name");
-  const [email, setEmail] = useState("email");
+  const [name, setName] = useState("user name");
+  const [email, setEmail] = useState("mail@email.com");
+  const [emailIsValid] = useState(true);
+
   console.log({ name });
   console.log({ email });
 
@@ -28,6 +30,7 @@ const UserInput = () => {
           updateName(e);
         }, 1000)}
       />
+      <div>{!emailIsValid ? "invalid email" : ""}</div>
       <input
         type="text"
         placeholder={email}
