@@ -2,22 +2,47 @@ import { useDispatch } from "react-redux";
 import { updateUserName, updateUserEmail } from "./userSlice/userSlice";
 import styled from "styled-components";
 
-const StyledSubmitButton = styled.div`
-  color: red;
-  background-color: white;
+const ClickableButton = styled.div`
   margin: 15px;
   border-radius: 15px;
 `;
 
-const SubmitButton = (dataToUpdate) => {
+const NotClickableButton = styled.div`
+  margin: 15px;
+  border-radius: 15px;
+`;
+
+const SubmitButton = (dataToUpdate, isDisabled) => {
   const dispatch = useDispatch();
+  // const disabled = isDisabled.isDisabled
+  console.log("isDisabled", isDisabled.isDisabled);
 
   const handleClick = () => {
-    dispatch(updateUserName(dataToUpdate.dataToUpdate.name));
-    dispatch(updateUserEmail(dataToUpdate.dataToUpdate.email));
+    const nameToSubmit = dataToUpdate.dataToUpdate.name;
+    const emailToSubmit = dataToUpdate.dataToUpdate.email;
+
+    if (nameToSubmit.length > 0 && emailToSubmit.length > 0) {
+      dispatch(updateUserName(nameToSubmit));
+      dispatch(updateUserEmail(emailToSubmit));
+    } else {
+      console.log("ERROR: inavlid name or email entered");
+    }
   };
 
-  return <StyledSubmitButton onClick={handleClick}>Submit</StyledSubmitButton>;
+  if (isDisabled) {
+    return (
+      <ClickableButton
+        onClick={handleClick}
+        style={{ color: "blue", backgroundColor: "white" }}
+      >
+        Submit
+      </ClickableButton>
+    );
+  } else {
+    return (
+      <NotClickableButton style={{ color: "red" }}>Submit</NotClickableButton>
+    );
+  }
 };
 
 export default SubmitButton;
