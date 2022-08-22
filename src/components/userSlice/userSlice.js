@@ -11,6 +11,7 @@ export const userSlice = createSlice({
       userName: "",
       userEmail: "",
     },
+    isNewUser: true,
   },
   reducers: {
     updateUserName(state, action) {
@@ -26,12 +27,19 @@ export const userSlice = createSlice({
         userEmail,
       };
     },
+    updateNewUserStatus(state, action) {
+      state.isNewUser = action.payload;
+    },
   },
 });
 
 //action creators
-export const { updateUserName, updateUserEmail, updateFetchedUserProfile } =
-  userSlice.actions;
+export const {
+  updateUserName,
+  updateUserEmail,
+  updateFetchedUserProfile,
+  updateNewUserStatus,
+} = userSlice.actions;
 
 //selectors
 export const selectUserName = (state) => {
@@ -52,6 +60,10 @@ export const selectFetchedUserProfileName = (state) => {
 
 export const selectFetchedUserProfileEmail = (state) => {
   return state.userSlice.fetchedUserProfile.userEmail;
+};
+
+export const isNewUser = (state) => {
+  return state.userSlice.isNewUser;
 };
 
 export default userSlice.reducer;
