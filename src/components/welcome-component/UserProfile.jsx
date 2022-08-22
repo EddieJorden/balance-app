@@ -12,7 +12,6 @@ const UserProfile = () => {
   return (
     <div>
       <StyledContainer>
-        <div>Welcome</div>
         <div>{userName ? userName : "loading..."}</div>
         <div>{userEmail ? userEmail : "loading..."}</div>
       </StyledContainer>

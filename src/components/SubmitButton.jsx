@@ -15,7 +15,6 @@ const NotClickableButton = styled.div`
 const SubmitButton = (dataToUpdate, isDisabled) => {
   const dispatch = useDispatch();
   // const disabled = isDisabled.isDisabled
-  console.log("isDisabled", isDisabled.isDisabled);
 
   const handleClick = () => {
     const nameToSubmit = dataToUpdate.dataToUpdate.name;
