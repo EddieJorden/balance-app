@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { updateUserName, updateUserEmail } from "./userSlice/userSlice";
+import { updateUserName, updateUserEmail } from "./userSlice";
 import styled from "styled-components";
 
 const ClickableButton = styled.div`

@@ -1,11 +1,11 @@
 import "./App.css";
-import Welcome from "./components/welcome-component/Welcome";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Welcome />
+        <LandingPage />
       </header>
     </div>
   );

@@ -4,9 +4,9 @@ import {
   selectUserEmail,
   selectUserName,
   updateFetchedUserProfile,
-} from "../userSlice/userSlice";
+} from "./userSlice";
 
-const UserNameFetch = () => {
+const UserProfileFetch = () => {
   const enteredName = useSelector(selectUserName);
   const enteredEmail = useSelector(selectUserEmail);
   const localhost = `http://localhost:8888/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
@@ -29,4 +29,4 @@ const UserNameFetch = () => {
   }, [enteredName, enteredEmail]);
 };
 
-export default UserNameFetch;
+export default UserProfileFetch;
