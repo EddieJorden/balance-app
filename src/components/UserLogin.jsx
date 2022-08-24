@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { debounce } from "lodash";
 
-import SubmitButton from "./SubmitButton";
+import FormSubmitButton from "./utils";
+import { useDispatch } from "react-redux";
+import { updateUserName, updateUserEmail } from "./userSlice";
+import UserProfileFetch from "./UserProfileFetch";
 
 const UserLogin = () => {
   const [name, setName] = useState("user name");
@@ -26,16 +29,29 @@ const UserLogin = () => {
     } else {
       setEmailIsValid(false);
     }
-
     setEmail(e.target.value);
   };
 
   const dataToUpdate = { name, email };
 
-  const isButtonDisabled = false;
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    console.log("clicked");
+    const nameToSubmit = dataToUpdate.name;
+    const emailToSubmit = dataToUpdate.email;
+
+    if (nameToSubmit.length > 0 && emailToSubmit.length > 0) {
+      dispatch(updateUserName(nameToSubmit));
+      dispatch(updateUserEmail(emailToSubmit));
+    } else {
+      console.log("ERROR: inavlid name or email entered");
+    }
+  };
 
   return (
     <div>
+      <UserProfileFetch />
       <input
         type="text"
         placeholder={name}
@@ -52,14 +68,12 @@ const UserLogin = () => {
       />
       <div>
         {emailIsValid ? (
-          <SubmitButton
-            dataToUpdate={dataToUpdate}
-            isDisabled={isButtonDisabled}
-          />
+          <FormSubmitButton buttonText="Submit" onClickFunction={handleClick} />
         ) : (
           "please enter a valid email"
         )}
       </div>
+      <div></div>
     </div>
   );
 };
