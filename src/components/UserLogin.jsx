@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { debounce } from "lodash";
 
-import SubmitButton from "../SubmitButton";
+import SubmitButton from "./SubmitButton";
 
-const UserInput = () => {
+const UserLogin = () => {
   const [name, setName] = useState("user name");
   const [email, setEmail] = useState("mail@email.com");
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -32,7 +32,7 @@ const UserInput = () => {
 
   const dataToUpdate = { name, email };
 
-  const isButtonDisabled = true;
+  const isButtonDisabled = false;
 
   return (
     <div>
@@ -43,7 +43,6 @@ const UserInput = () => {
           updateName(e);
         }, 1000)}
       />
-      <div>{!emailIsValid ? "invalid email" : ""}</div>
       <input
         type="text"
         placeholder={email}
@@ -58,11 +57,11 @@ const UserInput = () => {
             isDisabled={isButtonDisabled}
           />
         ) : (
-          "email entered is invalid"
+          "please enter a valid email"
         )}
       </div>
     </div>
   );
 };
 
-export default UserInput;
+export default UserLogin;
