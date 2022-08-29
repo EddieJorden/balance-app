@@ -4,7 +4,9 @@ import PropTypes from "prop-types";
 const StyledFormSubmitButton = styled.div`
   background-color: white;
   color: blue;
-  border-radius: 5px;
+  border-radius: 3px;
+  margin: 13px;
+  padding: 3px;
 `;
 const FormSubmitButton = ({ onClickFunction, buttonText }) => {
   return (

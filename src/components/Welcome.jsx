@@ -10,11 +10,11 @@ const Welcome = () => {
 
   return (
     <div>
-      <div>
+      <h1>
         {newUser === "existing user"
           ? `Welcome back ${profile.userName}`
           : "Welcome to Balance App"}
-      </div>
+      </h1>
     </div>
   );
 };

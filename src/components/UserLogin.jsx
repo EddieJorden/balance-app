@@ -49,8 +49,17 @@ const UserLogin = () => {
     }
   };
 
+  const setEmailBorderColor = () => {
+    const border = "4px solid red";
+    if (!emailIsValid) {
+      return border;
+    }
+  };
+
+  console.log(setEmailBorderColor());
+
   return (
-    <div>
+    <div style={{ margin: "13px" }}>
       <UserProfileFetch />
       <input
         type="text"
@@ -58,6 +67,7 @@ const UserLogin = () => {
         onChange={debounce((e) => {
           updateName(e);
         }, 1000)}
+        style={{ borderRadius: "3px", margin: "6px" }}
       />
       <input
         type="text"
@@ -65,15 +75,19 @@ const UserLogin = () => {
         onChange={debounce((e) => {
           updateEmail(e);
         }, 1000)}
+        style={{
+          border: setEmailBorderColor(),
+          borderRadius: "3px",
+          margin: "6px",
+        }}
       />
       <div>
         {emailIsValid ? (
           <FormSubmitButton buttonText="Submit" onClickFunction={handleClick} />
         ) : (
-          "please enter a valid email"
+          "please enter a valid user name and email"
         )}
       </div>
-      <div></div>
     </div>
   );
 };
