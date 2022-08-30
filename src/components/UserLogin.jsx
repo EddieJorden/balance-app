@@ -56,8 +56,6 @@ const UserLogin = () => {
     }
   };
 
-  console.log(setEmailBorderColor());
-
   return (
     <div style={{ margin: "13px" }}>
       <UserProfileFetch />
