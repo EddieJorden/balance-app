@@ -12,13 +12,23 @@ const NotClickableButton = styled.div`
   border-radius: 15px;
 `;
 
-const SubmitButton = (dataToUpdate, isDisabled) => {
+interface DataToUpdate {
+  name: string;
+  email: string;
+}
+
+interface Props {
+  dataToUpdate: DataToUpdate;
+  isDisabled: boolean;
+}
+
+const SubmitButton: React.FC<Props> = ({ dataToUpdate, isDisabled }) => {
   const dispatch = useDispatch();
   // const disabled = isDisabled.isDisabled
 
   const handleClick = () => {
-    const nameToSubmit = dataToUpdate.dataToUpdate.name;
-    const emailToSubmit = dataToUpdate.dataToUpdate.email;
+    const nameToSubmit = dataToUpdate.name;
+    const emailToSubmit = dataToUpdate.email;
 
     if (nameToSubmit.length > 0 && emailToSubmit.length > 0) {
       dispatch(updateUserName(nameToSubmit));

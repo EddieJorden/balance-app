@@ -10,6 +10,7 @@ const StyledFormSubmitButton = styled.div`
   padding: 3px;
   cursor: pointer;
 `;
+
 export const FormSubmitButton = ({ onClickFunction, buttonText }) => {
   return (
     <StyledFormSubmitButton onClick={onClickFunction}>
