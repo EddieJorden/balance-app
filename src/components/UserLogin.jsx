@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { debounce } from "lodash";
 
-import FormSubmitButton from "./utils";
+import { FormSubmitButton, FormInput } from "./utils";
 import { useDispatch } from "react-redux";
 import { updateUserName, updateUserEmail } from "./userSlice";
 import UserProfileFetch from "./UserProfileFetch";
@@ -50,7 +50,7 @@ const UserLogin = () => {
   };
 
   const setEmailBorderColor = () => {
-    const border = "4px solid red";
+    const border = "4px solid #E04643";
     if (!emailIsValid) {
       return border;
     }
@@ -59,26 +59,19 @@ const UserLogin = () => {
   return (
     <div style={{ margin: "13px" }}>
       <UserProfileFetch />
-      <input
-        type="text"
+      <FormInput
         placeholder={name}
-        onChange={debounce((e) => {
+        changeHandler={debounce((e) => {
           updateName(e);
         }, 1000)}
-        style={{ borderRadius: "3px", margin: "6px" }}
-      />
-      <input
-        type="text"
+      ></FormInput>
+      <FormInput
         placeholder={email}
-        onChange={debounce((e) => {
+        changeHandler={debounce((e) => {
           updateEmail(e);
         }, 1000)}
-        style={{
-          border: setEmailBorderColor(),
-          borderRadius: "3px",
-          margin: "6px",
-        }}
-      />
+        border={setEmailBorderColor()}
+      ></FormInput>
       <div>
         {emailIsValid ? (
           <FormSubmitButton buttonText="Submit" onClickFunction={handleClick} />
