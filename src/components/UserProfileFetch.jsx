@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectUserEmail,
@@ -13,20 +12,17 @@ const UserProfileFetch = () => {
   // const liveUrl = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    fetch(localhost)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-      })
-      .then((data) => {
-        dispatch(updateFetchedUserProfile(data));
-        console.log(`fetched profile":`, { [data.userName]: data });
-      });
-  }, [enteredName, enteredEmail]);
+  fetch(localhost)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw response;
+    })
+    .then((data) => {
+      dispatch(updateFetchedUserProfile(data));
+      console.log(`fetched profile":`, { [data.userName]: data });
+    });
 };
 
 export default UserProfileFetch;
