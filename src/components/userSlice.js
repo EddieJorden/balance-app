@@ -43,15 +43,6 @@ export const {
   updateNewUserStatus,
 } = userSlice.actions;
 
-// interface UserSlice {
-//   userInputName: string;
-//   userInputEmail: string;
-// }
-
-// interface State {
-//   userSlice: UserSlice;
-// }
-
 //selectors
 export const selectUserName = (state) => {
   return state.userSlice.userInputName;

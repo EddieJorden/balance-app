@@ -1,5 +1,5 @@
-import { debounce } from "lodash";
-import { ChangeEvent } from "react";
+import { debounce } from 'lodash';
+import { ChangeEvent } from 'react';
 
 interface Props {
   setter: Function;
@@ -14,13 +14,7 @@ const InputField: React.FC<Props> = ({ setter, getter }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder={getter}
-        onChange={debounce((e: ChangeEvent<HTMLInputElement>) => {
-          handleChange(e);
-        }, 1000)}
-      />
+      <input type="text" placeholder={getter} />
     </div>
   );
 };
