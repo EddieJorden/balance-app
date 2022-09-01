@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectUserEmail,
   selectUserName,
   updateFetchedUserProfile,
-} from "./userSlice";
+} from './userSlice';
 
-const UserProfileFetch = () => {
+function UserProfileFetch() {
   const enteredName = useSelector(selectUserName);
   const enteredEmail = useSelector(selectUserEmail);
   const localhost = `http://localhost:8888/getUserProfile?enteredProfileName=${enteredName}&enteredProfileEmail=${enteredEmail}`;
@@ -16,12 +16,13 @@ const UserProfileFetch = () => {
       if (response.ok) {
         return response.json();
       }
-      throw response;
+      throw new Error();
     })
     .then((data) => {
       dispatch(updateFetchedUserProfile(data));
-      console.log(`fetched profile":`, { [data.userName]: data });
+      console.log('fetched profile":', { [data.userName]: data });
     });
-};
+  return <div />;
+}
 
 export default UserProfileFetch;

@@ -1,12 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 import { debounce } from 'lodash';
 
-import { FormSubmitButton, FormInput } from './utils';
 import { useDispatch } from 'react-redux';
+import { FormSubmitButton, FormInput } from './utils';
 import { updateUserName, updateUserEmail } from './userSlice';
-import UserProfileFetch from './UserProfileFetch';
 
-const UserLogin = () => {
+function UserLogin() {
   const [name, setName] = useState('user name');
   const [email, setEmail] = useState('mail@email.com');
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -19,10 +18,10 @@ const UserLogin = () => {
   };
 
   const updateEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    let val = e.target.value;
+    const val = e.target.value;
     if (
       /^[a-z0-9][a-z0-9-_.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(
-        val
+        val,
       )
     ) {
       setEmailIsValid(true);
@@ -50,10 +49,12 @@ const UserLogin = () => {
   };
 
   const setEmailBorderColor = () => {
-    const border = '4px solid #E04643';
-    if (!emailIsValid) {
-      return border;
+    const redBorder = '4px solid #E04643';
+    const whiteBorder = '4px solid white';
+    if (emailIsValid) {
+      return whiteBorder;
     }
+    return redBorder;
   };
 
   return (
@@ -63,13 +64,15 @@ const UserLogin = () => {
         placeholder={name}
         changeHandler={debounce((e: ChangeEvent<HTMLInputElement>) => {
           updateName(e);
-        }, 1000)}></FormInput>
+        }, 1000)}
+      />
       <FormInput
         placeholder={email}
         changeHandler={debounce((e: ChangeEvent<HTMLInputElement>) => {
           updateEmail(e);
         }, 1000)}
-        border={setEmailBorderColor()}></FormInput>
+        border={setEmailBorderColor()}
+      />
       <div>
         {emailIsValid ? (
           <FormSubmitButton buttonText="Submit" onClickFunction={handleClick} />
@@ -79,6 +82,6 @@ const UserLogin = () => {
       </div>
     </div>
   );
-};
+}
 
 export default UserLogin;

@@ -1,16 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit';
 
 export const userSlice = createSlice({
-  name: "userName",
+  name: 'userName',
   initialState: {
-    //username and email from user input
-    userInputName: "user name",
-    userInputEmail: "email@mail.com",
-    //profile fetched from server
+    // username and email from user input
+    userInputName: 'user name',
+    userInputEmail: 'email@mail.com',
+    // profile fetched from server
     fetchedUserProfile: {
-      userName: "",
-      userEmail: "",
-      userStatus: "",
+      userName: '',
+      userEmail: '',
+      userStatus: '',
     },
     isNewUser: true,
   },
@@ -35,7 +37,7 @@ export const userSlice = createSlice({
   },
 });
 
-//action creators
+// action creators
 export const {
   updateUserName,
   updateUserEmail,
@@ -43,29 +45,21 @@ export const {
   updateNewUserStatus,
 } = userSlice.actions;
 
-//selectors
-export const selectUserName = (state) => {
-  return state.userSlice.userInputName;
-};
+// selectors
+export const selectUserName = (state) => state.userSlice.userInputName;
 
-export const selectUserEmail = (state) => {
-  return state.userSlice.userInputEmail;
-};
+export const selectUserEmail = (state) => state.userSlice.userInputEmail;
 
-export const selectFetchedUserProfile = (state) => {
-  return state.userSlice.fetchedUserProfile;
-};
+export const selectFetchedUserProfile = (state) =>
+  state.userSlice.fetchedUserProfile;
 
-export const selectFetchedUserProfileName = (state) => {
-  return state.userSlice.fetchedUserProfile.userName;
-};
+export const selectFetchedUserProfileName = (state) =>
+  state.userSlice.fetchedUserProfile.userName;
 
-export const selectFetchedUserProfileEmail = (state) => {
-  return state.userSlice.fetchedUserProfile.userEmail;
-};
+export const selectFetchedUserProfileEmail = (state) =>
+  state.userSlice.fetchedUserProfile.userEmail;
 
-export const selectFetchedUserProfileStatus = (state) => {
-  return state.userSlice.fetchedUserProfile.userStatus;
-};
+export const selectFetchedUserProfileStatus = (state) =>
+  state.userSlice.fetchedUserProfile.userStatus;
 
 export default userSlice.reducer;
