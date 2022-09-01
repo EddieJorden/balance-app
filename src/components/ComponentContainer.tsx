@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledContainer = styled.div`
   background-color: #3e505c;

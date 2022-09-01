@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import PropTypes from "prop-types";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-//Form submit button
+// Form submit button
 const StyledFormSubmitButton = styled.div`
   background-color: white;
   color: blue;
@@ -10,19 +10,18 @@ const StyledFormSubmitButton = styled.div`
   padding: 3px;
   cursor: pointer;
 `;
-export const FormSubmitButton = ({ onClickFunction, buttonText }) => {
+
+export function FormSubmitButton({ onClickFunction, buttonText }) {
   return (
     <StyledFormSubmitButton onClick={onClickFunction}>
       {buttonText}
     </StyledFormSubmitButton>
   );
-};
+}
 
 FormSubmitButton.defaultProps = {
-  buttonText: "click",
-  onClickFunction: () => {
-    console.log("clicked");
-  },
+  buttonText: 'click',
+  onClickFunction: () => {},
 };
 
 FormSubmitButton.propTypes = {
@@ -30,33 +29,31 @@ FormSubmitButton.propTypes = {
   onClickFunction: PropTypes.func,
 };
 
-//Form input
+// Form input
 
-export const FormInput = ({ placeholder, changeHandler, border }) => {
+export function FormInput({ placeholder, changeHandler, border }) {
   return (
     <input
       type="text"
       placeholder={placeholder}
       onChange={changeHandler}
       style={{
-        border: border,
-        borderRadius: "3px",
-        margin: "6px",
-        cursor: "pointer",
-        height: "33px",
-        width: "260px",
-        fontSize: "18px",
+        border,
+        borderRadius: '3px',
+        margin: '6px',
+        cursor: 'pointer',
+        height: '33px',
+        width: '260px',
+        fontSize: '18px',
       }}
-    ></input>
+    />
   );
-};
+}
 
 FormInput.defaultProps = {
-  placeholder: "default value",
-  changeHandler: () => {
-    console.log("clicked");
-  },
-  border: "none",
+  placeholder: 'default value',
+  changeHandler: () => {},
+  border: 'none',
 };
 
 FormInput.propTypes = {
