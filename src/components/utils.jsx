@@ -21,9 +21,7 @@ export function FormSubmitButton({ onClickFunction, buttonText }) {
 
 FormSubmitButton.defaultProps = {
   buttonText: 'click',
-  onClickFunction: () => {
-    console.log('clicked');
-  },
+  onClickFunction: () => {},
 };
 
 FormSubmitButton.propTypes = {
@@ -54,9 +52,7 @@ export function FormInput({ placeholder, changeHandler, border }) {
 
 FormInput.defaultProps = {
   placeholder: 'default value',
-  changeHandler: () => {
-    console.log('clicked');
-  },
+  changeHandler: () => {},
   border: 'none',
 };
 

@@ -10,9 +10,6 @@ function UserLogin() {
   const [email, setEmail] = useState('mail@email.com');
   const [emailIsValid, setEmailIsValid] = useState(false);
 
-  console.log({ name });
-  console.log({ email });
-
   const updateName = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
@@ -36,7 +33,6 @@ function UserLogin() {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log('clicked');
     const nameToSubmit = dataToUpdate.name;
     const emailToSubmit = dataToUpdate.email;
 
@@ -44,7 +40,7 @@ function UserLogin() {
       dispatch(updateUserName(nameToSubmit));
       dispatch(updateUserEmail(emailToSubmit));
     } else {
-      console.log('ERROR: inavlid name or email entered');
+      throw new Error('invalid name or email');
     }
   };
 

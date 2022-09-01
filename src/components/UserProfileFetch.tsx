@@ -20,7 +20,6 @@ function UserProfileFetch() {
     })
     .then((data) => {
       dispatch(updateFetchedUserProfile(data));
-      console.log('fetched profile":', { [data.userName]: data });
     });
   return <div />;
 }
