@@ -44,9 +44,9 @@ function UserLogin() {
         }
         return redBorder;
     };
-    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: { margin: '13px' } }, { children: [(0, jsx_runtime_1.jsx)(utils_1.FormInput, { placeHolder: name, changeHandler: (0, lodash_1.debounce)((e) => {
+    return ((0, jsx_runtime_1.jsxs)("div", Object.assign({ style: { margin: '13px' } }, { children: [(0, jsx_runtime_1.jsx)(utils_1.FormInput, { placeholder: name, changeHandler: (0, lodash_1.debounce)((e) => {
                     updateName(e);
-                }, 1000) }), (0, jsx_runtime_1.jsx)(utils_1.FormInput, { placeHolder: email, changeHandler: (0, lodash_1.debounce)((e) => {
+                }, 1000) }), (0, jsx_runtime_1.jsx)(utils_1.FormInput, { placeholder: email, changeHandler: (0, lodash_1.debounce)((e) => {
                     updateEmail(e);
                 }, 1000), border: setEmailBorderColor() }), (0, jsx_runtime_1.jsx)("div", { children: emailIsValid ? ((0, jsx_runtime_1.jsx)(utils_1.FormSubmitButton, { buttonText: "Submit", onClickFunction: handleClick })) : ('please enter a valid user name and email') })] })));
 }
