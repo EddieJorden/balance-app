@@ -29,15 +29,15 @@ FormSubmitButton.propTypes = {
     onClickFunction: prop_types_1.default.func,
 };
 function FormInput({ placeholder, changeHandler, border, }) {
-    return ((0, jsx_runtime_1.jsx)("input", { type: "text", placeholder: placeholder, onChange: changeHandler, style: {
-            border,
-            borderRadius: '3px',
-            margin: '6px',
-            cursor: 'pointer',
-            height: '33px',
-            width: '260px',
-            fontSize: '18px',
-        } }));
+    return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)("input", { type: "text", placeholder: placeholder, onChange: changeHandler, style: {
+                border,
+                borderRadius: '3px',
+                margin: '6px',
+                cursor: 'pointer',
+                height: '33px',
+                width: '260px',
+                fontSize: '18px',
+            } }) }));
 }
 exports.FormInput = FormInput;
 FormInput.defaultProps = {
