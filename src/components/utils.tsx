@@ -11,7 +11,17 @@ const StyledFormSubmitButton = styled.div`
   cursor: pointer;
 `;
 
-export function FormSubmitButton({ onClickFunction, buttonText }) {
+interface FormSubmitButtonProps {
+  onClickFunction: () => any;
+  buttonText: string;
+  //   setter: Function;
+  //   getter: string;
+}
+
+export function FormSubmitButton({
+  onClickFunction,
+  buttonText,
+}: FormSubmitButtonProps): JSX.Element {
   return (
     <StyledFormSubmitButton onClick={onClickFunction}>
       {buttonText}
@@ -30,23 +40,34 @@ FormSubmitButton.propTypes = {
 };
 
 // Form input
+interface FormInputProps {
+  placeholder: string;
+  changeHandler: () => {};
+  border: string;
+}
 
-export function FormInput({ placeholder, changeHandler, border }) {
+export function FormInput({
+  placeholder,
+  changeHandler,
+  border,
+}: FormInputProps): JSX.Element {
   return (
-    <input
-      type="text"
-      placeholder={placeholder}
-      onChange={changeHandler}
-      style={{
-        border,
-        borderRadius: '3px',
-        margin: '6px',
-        cursor: 'pointer',
-        height: '33px',
-        width: '260px',
-        fontSize: '18px',
-      }}
-    />
+    <div>
+      <input
+        type="text"
+        placeholder={placeholder}
+        onChange={changeHandler}
+        style={{
+          border,
+          borderRadius: '3px',
+          margin: '6px',
+          cursor: 'pointer',
+          height: '33px',
+          width: '260px',
+          fontSize: '18px',
+        }}
+      />
+    </div>
   );
 }
 
