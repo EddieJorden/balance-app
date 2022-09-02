@@ -46,20 +46,20 @@ export const {
 } = userSlice.actions;
 
 // selectors
-export const selectUserName = (state) => state.userSlice.userInputName;
+export const selectUserName = (state: any) => state.userSlice.userInputName;
 
-export const selectUserEmail = (state) => state.userSlice.userInputEmail;
+export const selectUserEmail = (state: any) => state.userSlice.userInputEmail;
 
-export const selectFetchedUserProfile = (state) =>
+export const selectFetchedUserProfile = (state: any) =>
   state.userSlice.fetchedUserProfile;
 
-export const selectFetchedUserProfileName = (state) =>
+export const selectFetchedUserProfileName = (state: any) =>
   state.userSlice.fetchedUserProfile.userName;
 
-export const selectFetchedUserProfileEmail = (state) =>
+export const selectFetchedUserProfileEmail = (state: any) =>
   state.userSlice.fetchedUserProfile.userEmail;
 
-export const selectFetchedUserProfileStatus = (state) =>
+export const selectFetchedUserProfileStatus = (state: any) =>
   state.userSlice.fetchedUserProfile.userStatus;
 
 export default userSlice.reducer;
