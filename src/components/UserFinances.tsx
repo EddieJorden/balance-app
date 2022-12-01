@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import StyledContainer from './ComponentContainer';
 
 function UserFinances() {
   const [monthlyIncome, setMonthlyIncome] = useState(0);
@@ -20,8 +21,8 @@ function UserFinances() {
   };
 
   return (
-    <div>
-      <div>user finances here</div>
+    <StyledContainer>
+      <div style={{ fontWeight: 'bold' }}>user finances here</div>
       <br />
       <div>monthly income</div>
       <input defaultValue={monthlyIncome} onChange={updateMonthlyIncome} />
@@ -31,7 +32,7 @@ function UserFinances() {
       <br />
       <div>hours per week</div>
       <input defaultValue={hoursPerWeek} onChange={updateHoursPerWeek} />
-    </div>
+    </StyledContainer>
   );
 }
 

@@ -13,6 +13,7 @@ function UserProfile() {
     <div>
       <StyledContainer>
         <div style={{ fontWeight: 'bold' }}>Profile</div>
+        <br />
         <div>{`Name: ${userName}` || 'loading...'}</div>
         <div>{`Email: ${userEmail}` || 'loading...'}</div>
       </StyledContainer>
