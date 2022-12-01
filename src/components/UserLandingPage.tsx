@@ -1,7 +1,9 @@
+import UserProfile from './UserProfile';
+
 function UserLandingPage() {
   return (
     <div>
-      user login page here
+      <UserProfile />
     </div>
   );
 }
