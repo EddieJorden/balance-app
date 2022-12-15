@@ -2,46 +2,64 @@ import { useState } from 'react';
 import StyledContainer from './ComponentContainer';
 
 function UserFinances() {
-  const [monthlyIncome, setMonthlyIncome] = useState(0);
-  const [monthlyExpenses, setMonthlyExpenses] = useState(0);
-  const [hoursPerWeek, setHoursPerWeek] = useState(0);
-  const [sleepHoursPerDay, setSleepHoursPerDay] = useState(0);
-  const [eatingHoursPerDay, setEatingHoursPerDay] = useState(0);
-  const [leisureHoursPerDay, setLeisureHoursPerDay] = useState(0);
-  const [retirementAmount, setRetirementAmount] = useState(0);
+  const [monthlyIncome, setMonthlyIncome] = useState(10000);
+  console.log('monthlyIncome in state', monthlyIncome);
+  const [monthlyExpenses, setMonthlyExpenses] = useState(4500);
+  const monthlySavings = monthlyIncome - monthlyExpenses;
+  const [investmentReturn, setInvestMentReturn] = useState(0);
+  console.log('investmentReturn in state', investmentReturn);
+  const [retirementAmount, setRetirementAmount] = useState(2000000);
+  console.log('amount needed to retire', retirementAmount);
 
   const updateMonthlyIncome = (e: any) => {
-    console.log(`monthly income $${e.target.value}`);
-    setMonthlyIncome(e.target.value);
+    console.log(`monthly income e.target.value $${e.target.value}`);
+    setMonthlyIncome(Number(e.target.value));
   };
+
   const updateMonthlyExpenses = (e: any) => {
     console.log(`monthly expenses $${e.target.value}`);
-    setMonthlyExpenses(e.target.value);
-  };
-  const updateHoursPerWeek = (e: any) => {
-    console.log(`hours per week${e.target.value}`);
-    setHoursPerWeek(e.target.value);
-  };
-  const updateSleepingHoursPerDay = (e: any) => {
-    console.log(`sleep hours per day${e.target.value}`);
-    setSleepHoursPerDay(e.target.value);
-  };
-  const updateEatingHoursPerDay = (e: any) => {
-    console.log(`eating hours per day${e.target.value}`);
-    setEatingHoursPerDay(e.target.value);
-  };
-  const updateLeisureHoursPerDay = (e: any) => {
-    console.log(`leisure hours per day${e.target.value}`);
-    setLeisureHoursPerDay(e.target.value);
+    setMonthlyExpenses(Number(e.target.value));
   };
   const updateRetirementAmount = (e: any) => {
-    console.log(`Amount needed to retire ${e.target.value}`);
-    setRetirementAmount(e.target.value);
+    setRetirementAmount(Number(e.target.value));
+  };
+
+  const updateInvestMentReturn = (e: any) => {
+    setInvestMentReturn(Number(e.target.value));
+  };
+
+  const timeTillRetirement: any = () => {
+    const monthsTillRetire = Math.floor(retirementAmount / monthlySavings);
+    const yearsTillRetirement = monthsTillRetire / 12;
+    return `${monthsTillRetire} months till retirement or ${yearsTillRetirement} years`;
   };
 
   return (
     <StyledContainer>
-      <div style={{ fontWeight: 'bold' }}>user finances here</div>
+      <div style={{ fontWeight: 'bold' }}>Lets take a look at our finances</div>
+      <div style={{ fontWeight: 'bold' }}>
+        With a monthly income of $
+        {monthlyIncome}
+      </div>
+      {' '}
+      <div style={{ fontWeight: 'bold' }}>
+        and monthly expenses of $
+        {monthlyExpenses}
+      </div>
+      <div style={{ fontWeight: 'bold' }}>
+        {monthlyIncome > monthlyExpenses ? 'We are making enough money' : 'It looks like we are not making enough money for our expenses,  lets have a closer looks and see what we can do.'}
+      </div>
+      <div style={{ fontWeight: 'bold' }}>
+        With monthly savings of $
+        {monthlySavings}
+        {' '}
+        and a retirement goal of $$
+        {retirementAmount}
+        {' '}
+        <div>your time till retirement is</div>
+        {timeTillRetirement()}
+        <div />
+      </div>
       <br />
       <div>monthly income</div>
       <input defaultValue={monthlyIncome} onChange={updateMonthlyIncome} />
@@ -49,37 +67,12 @@ function UserFinances() {
       <div>monthly expenses</div>
       <input defaultValue={monthlyExpenses} onChange={updateMonthlyExpenses} />
       <br />
-      <div>hours per week</div>
-      <input defaultValue={hoursPerWeek} onChange={updateHoursPerWeek} />
-      <br />
-      <div>hours sleeping per day</div>
-      <input defaultValue={sleepHoursPerDay} onChange={updateSleepingHoursPerDay} />
-      <br />
-      <div>hours eating per day</div>
-      <input defaultValue={eatingHoursPerDay} onChange={updateEatingHoursPerDay} />
-      <br />
-      <div>leisure hours per day</div>
-      <input defaultValue={leisureHoursPerDay} onChange={updateLeisureHoursPerDay} />
-      <br />
       <div>Amount to retire</div>
       <input defaultValue={retirementAmount} onChange={updateRetirementAmount} />
       <div>
-        finance statistics
-      </div>
-      <div>
-        excess monthly income
-      </div>
-      <div>
-        monthly expenses
-      </div>
-      <div>
-        years till retirement
-      </div>
-      <div>
-        retirement amount
-      </div>
-      <div>
-        income from saving with 5% return
+        income from saving with
+        <input defaultValue={investmentReturn} onChange={updateInvestMentReturn} style={{ width: '30px' }} />
+        percent return
       </div>
       <div />
     </StyledContainer>
