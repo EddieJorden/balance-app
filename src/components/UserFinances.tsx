@@ -6,7 +6,7 @@ function UserFinances() {
   console.log('monthlyIncome in state', monthlyIncome);
   const [monthlyExpenses, setMonthlyExpenses] = useState(4500);
   const monthlySavings = monthlyIncome - monthlyExpenses;
-  const [investmentReturn, setInvestMentReturn] = useState(0);
+  const [investmentReturn, setInvestMentReturn] = useState(0.05);
   console.log('investmentReturn in state', investmentReturn);
   const [retirementAmount, setRetirementAmount] = useState(2000000);
   console.log('amount needed to retire', retirementAmount);
@@ -25,14 +25,27 @@ function UserFinances() {
   };
 
   const updateInvestMentReturn = (e: any) => {
-    setInvestMentReturn(Number(e.target.value));
+    setInvestMentReturn(Number(e.target.value) / 100);
   };
 
-  const timeTillRetirement: any = () => {
-    const monthsTillRetire = Math.floor(retirementAmount / monthlySavings);
-    const yearsTillRetirement = monthsTillRetire / 12;
-    return `${monthsTillRetire} months till retirement or ${yearsTillRetirement} years`;
+  const monthsTillRetirement: any = (currentSavings: any = 0, months: any = 0) => {
+    if (currentSavings >= retirementAmount) return months;
+    const newSavings = currentSavings + monthlySavings;
+    const newSavingsWithInterest = newSavings + ((newSavings * investmentReturn) / 12);
+    const newMonths = months + 1;
+    console.log('newSavings', newSavingsWithInterest);
+    console.log(investmentReturn);
+    return monthsTillRetirement(newSavingsWithInterest, newMonths);
   };
+
+  // const monthsTillRetirement: any = () => {
+  //   let currentSavings = 0;
+  //   let currentMonths = 0;
+  //   currentMonths += 1;
+  //   currentSavings += monthlySavings + (monthlySavings * (investmentReturn / 100));
+
+  //   return `${currentMonths} months with ${currentSavings} savings`;
+  // };
 
   return (
     <StyledContainer>
@@ -50,14 +63,26 @@ function UserFinances() {
         {monthlyIncome > monthlyExpenses ? 'We are making enough money' : 'It looks like we are not making enough money for our expenses,  lets have a closer looks and see what we can do.'}
       </div>
       <div style={{ fontWeight: 'bold' }}>
-        With monthly savings of $
+        <div>With monthly savings of</div>
+        $
         {monthlySavings}
         {' '}
-        and a retirement goal of $$
-        {retirementAmount}
+        <div>
+          and a retirement goal of $
+          {retirementAmount}
+        </div>
+
         {' '}
-        <div>your time till retirement is</div>
-        {timeTillRetirement()}
+        <div>
+          your time till retire is
+          <div>
+            {monthsTillRetirement()}
+            {' '}
+            months or
+            {monthsTillRetirement() / 12}
+            years
+          </div>
+        </div>
         <div />
       </div>
       <br />
