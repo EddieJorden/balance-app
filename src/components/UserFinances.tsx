@@ -30,6 +30,7 @@ function UserFinances() {
 
   const monthsTillRetirement: any = (currentSavings: any = 0, months: any = 0) => {
     if (currentSavings >= retirementAmount) return months;
+    if (monthlySavings <= 0) return 'no savings';
     const newSavings = currentSavings + monthlySavings;
     const newSavingsWithInterest = newSavings + ((newSavings * investmentReturn) / 12);
     const newMonths = months + 1;
