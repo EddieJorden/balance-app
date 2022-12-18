@@ -5,7 +5,6 @@ const StyledContainer = styled.div`
   padding: 40px;
   border-radius: 10px;
   font-weight: heavy;
-  width: 300px;
   margin: 73px;
 `;
 
