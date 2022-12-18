@@ -6,7 +6,7 @@ function UserFinances() {
   console.log('monthlyIncome in state', monthlyIncome);
   const [monthlyExpenses, setMonthlyExpenses] = useState(4500);
   const monthlySavings = monthlyIncome - monthlyExpenses;
-  const [investmentReturn, setInvestMentReturn] = useState(0.05);
+  const [investmentReturn, setInvestMentReturn] = useState(5);
   console.log('investmentReturn in state', investmentReturn);
   const [retirementAmount, setRetirementAmount] = useState(2000000);
   console.log('amount needed to retire', retirementAmount);
@@ -25,14 +25,14 @@ function UserFinances() {
   };
 
   const updateInvestMentReturn = (e: any) => {
-    setInvestMentReturn(Number(e.target.value) / 100);
+    setInvestMentReturn(Number(e.target.value));
   };
 
   const monthsTillRetirement: any = (currentSavings: any = 0, months: any = 0) => {
     if (currentSavings >= retirementAmount) return months;
-    if (monthlySavings <= 0) return 'no savings';
+    if (monthlySavings <= 0) return 0;
     const newSavings = currentSavings + monthlySavings;
-    const newSavingsWithInterest = newSavings + ((newSavings * investmentReturn) / 12);
+    const newSavingsWithInterest = newSavings + ((newSavings * (investmentReturn / 100)) / 12);
     const newMonths = months + 1;
     console.log('newSavings', newSavingsWithInterest);
     console.log(investmentReturn);
@@ -61,7 +61,7 @@ function UserFinances() {
         {monthlyExpenses}
       </div>
       <div style={{ fontWeight: 'bold' }}>
-        {monthlyIncome > monthlyExpenses ? 'We are making enough money' : 'It looks like we are not making enough money for our expenses,  lets have a closer looks and see what we can do.'}
+        {monthlyIncome > monthlyExpenses ? 'We are making enough money' : 'we are not making enough money'}
       </div>
       <div style={{ fontWeight: 'bold' }}>
         <div>With monthly savings of</div>
@@ -80,7 +80,8 @@ function UserFinances() {
             {monthsTillRetirement()}
             {' '}
             months or
-            {monthsTillRetirement() / 12}
+            {' '}
+            {Math.floor(monthsTillRetirement() / 12)}
             years
           </div>
         </div>
