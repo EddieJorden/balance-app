@@ -17,7 +17,7 @@ function UserLogin() {
   const updateEmail = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
     if (
-      /^[a-z0-9][a-z0-9-_.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/.test(
+      /^[a-z0-9][a-z0-9-_.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/i.test(
         val,
       )
     ) {
