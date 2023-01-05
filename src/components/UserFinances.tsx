@@ -53,12 +53,12 @@ function UserFinances() {
       <div style={{ fontWeight: 'bold' }}>Lets take a look at our finances</div>
       <div style={{ fontWeight: 'bold' }}>
         With a monthly income of $
-        {monthlyIncome}
+        <input defaultValue={monthlyIncome} onChange={updateMonthlyIncome} />
       </div>
       {' '}
       <div style={{ fontWeight: 'bold' }}>
         and monthly expenses of $
-        {monthlyExpenses}
+        <input defaultValue={monthlyExpenses} onChange={updateMonthlyExpenses} />
       </div>
       <div style={{ fontWeight: 'bold' }}>
         {monthlyIncome > monthlyExpenses ? 'We are making enough money' : 'we are not making enough money'}
@@ -70,7 +70,13 @@ function UserFinances() {
         {' '}
         <div>
           and a retirement goal of $
-          {retirementAmount}
+          <input defaultValue={retirementAmount} onChange={updateRetirementAmount} />
+        </div>
+        <div>
+          and a return on investment of
+          <br />
+          <input defaultValue={investmentReturn} onChange={updateInvestMentReturn} style={{ width: '30px' }} />
+          %
         </div>
 
         {' '}
@@ -87,20 +93,7 @@ function UserFinances() {
         </div>
         <div />
       </div>
-      <br />
-      <div>monthly income</div>
-      <input defaultValue={monthlyIncome} onChange={updateMonthlyIncome} />
-      <br />
-      <div>monthly expenses</div>
-      <input defaultValue={monthlyExpenses} onChange={updateMonthlyExpenses} />
-      <br />
-      <div>Amount to retire</div>
-      <input defaultValue={retirementAmount} onChange={updateRetirementAmount} />
-      <div>
-        income from saving with
-        <input defaultValue={investmentReturn} onChange={updateInvestMentReturn} style={{ width: '30px' }} />
-        percent return
-      </div>
+
       <div />
     </StyledContainer>
   );

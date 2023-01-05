@@ -14,8 +14,19 @@ function UserProfile() {
       <StyledContainer>
         <div style={{ fontWeight: 'bold' }}>Profile</div>
         <br />
-        <div>{`Name: ${userName}` || 'loading...'}</div>
-        <div>{`Email: ${userEmail}` || 'loading...'}</div>
+        <div style={{ textAlign: 'left' }}>
+          <div style={{ fontWeight: 'bold' }}>
+            Name:
+            <span style={{ fontWeight: 'normal' }}>
+              {` ${userName}` || 'loading...'}
+            </span>
+          </div>
+          <div style={{ fontWeight: 'bold' }}>
+            Email:
+            <span style={{ fontWeight: 'normal' }}>{` ${userEmail}` || 'loading...'}</span>
+          </div>
+          <div />
+        </div>
       </StyledContainer>
     </div>
   );
