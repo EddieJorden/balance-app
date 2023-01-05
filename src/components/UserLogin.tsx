@@ -6,8 +6,8 @@ import { FormSubmitButton, FormInput } from './utils';
 import { updateUserName, updateUserEmail } from './userSlice';
 
 function UserLogin() {
-  const [name, setName] = useState('user name');
-  const [email, setEmail] = useState('mail@email.com');
+  const [name, setName] = useState('name');
+  const [email, setEmail] = useState('email@mail.com');
   const [emailIsValid, setEmailIsValid] = useState(false);
 
   const updateName = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +55,7 @@ function UserLogin() {
 
   return (
     <div style={{ margin: '13px' }}>
+      <div style={{ fontWeight: 'bold' }}>Login to start</div>
       <FormInput
         placeholder={name}
         changeHandler={debounce((e: ChangeEvent<HTMLInputElement>) => {
