@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_KEY = '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';
+const API_KEY = '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';
 
 // eslint-disable-next-line react/prop-types
 function ChatGPT({ userPrompt }: any) {
