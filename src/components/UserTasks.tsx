@@ -10,7 +10,7 @@ import {
   selectFetchedUserProfileEmail,
   // selectUserEmail,
 } from './userSlice';
-import { FormInput, FormSubmitButton } from './utils';
+import { FormInput, FormSubmitButton, prefix } from './utils';
 
 function UserTasks() {
   const [enteredTask, setEnteredTask] = useState('default task');
@@ -41,7 +41,7 @@ function UserTasks() {
   const handleClick = () => {
     // updateUserNameAndEmail();
 
-    const url = `http://localhost:8888/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
+    const url = `${prefix}/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
     fetch(url, {
       method: 'POST',
       headers: {
