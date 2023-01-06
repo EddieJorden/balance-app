@@ -10,7 +10,7 @@ import {
   selectFetchedUserProfileEmail,
   // selectUserEmail,
 } from './userSlice';
-import { FormInput, FormSubmitButton, prefix } from './utils';
+import { FormInput, FormSubmitButton } from './utils';
 
 function UserTasks() {
   const [enteredTask, setEnteredTask] = useState('default task');
@@ -41,7 +41,7 @@ function UserTasks() {
   const handleClick = () => {
     // updateUserNameAndEmail();
 
-    const url = `${prefix}/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
+    const url = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
     fetch(url, {
       method: 'POST',
       headers: {
