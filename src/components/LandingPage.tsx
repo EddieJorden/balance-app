@@ -1,24 +1,14 @@
 import { useSelector } from 'react-redux';
-// import { useState } from 'react';
 import Welcome from './Welcome';
 import UserLogin from './UserLogin';
 import { selectIsNewUser } from './userSlice';
 import UserLandingPage from './UserLandingPage';
-import ChatGPT from './AiComponent';
-// import { FormSubmitButton } from './utils';
+import ChatWindow from './AiComponent';
+import { prefix } from './utils';
 
 function contentToDisplay() {
   const isNewUser = useSelector(selectIsNewUser);
-  // const [userPrompt, setUserPrompt] = useState('');
-  // const [chatGptPrompt, setChatGptPrompt] = useState('give me a welcome greeting');
-
-  // const handleChange = (e: any) => {
-  //   setUserPrompt(e.target.value);
-  // };
-
-  // const updateEnteredPrompt = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setUserPrompt(e.target.value);
-  // };
+  const apiUrl = `${prefix}/fetch-chatgpt-response`;
 
   if (isNewUser === false) {
     return (
@@ -42,10 +32,7 @@ function contentToDisplay() {
         joy, and purpose that have been lost in the pursuit of
         profit. Join us, and let&apos;s build a better world together.
       </div>
-      <ChatGPT />
-      {/* <input placeholder={userPrompt} onChange={(e: any) => handleChange(e)} /> */}
-      {/* <FormSubmitButton onClickFunction={() => { setChatGptPrompt(userPrompt);
-       }} buttonText="submit" /> */}
+      <ChatWindow apiUrl={apiUrl} />
       <div />
       <UserLogin />
     </div>
