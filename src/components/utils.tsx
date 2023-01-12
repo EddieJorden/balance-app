@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // live url
-// export const prefix = 'https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app';
+export const prefix = 'https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app';
 
 // local url
-export const prefix = 'http://localhost:8888';
+// export const prefix = 'http://localhost:8888';
 
 export const missionStatement = 'Behold this mission that Balance App has set out: To ignite a revolution that will bring about a transformation of how we live, work, and relate to the world around us. This revolution will draw a line in the sand and proclaim: No more should money and overwork be valued above all else; no more should our well-being and happiness be sacrificed in the name of profit. To aid in these pursuits, Balance App offers an intuitive user interface to help people better manage their tasks, schedule, and time. Together, let us harmonize our lives and reclaim joy, balance, and purpose.';
 // export const missionStatement =`Our mission at Balance App is to ignite a revolution in
