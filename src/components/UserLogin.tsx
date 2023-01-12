@@ -55,7 +55,7 @@ function UserLogin() {
 
   return (
     <div style={{ margin: '13px' }}>
-      <div style={{ fontWeight: 'bold' }}>Login to start</div>
+      <div style={{ fontWeight: 'bold' }}>Login to start using our advanced AI powered CRM and time management tools! (coming soon)</div>
       <FormInput
         placeholder={name}
         changeHandler={debounce((e: ChangeEvent<HTMLInputElement>) => {
