@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { updateUserProfile } from './userProfileSlice';
 
 const StyledLoginContainer = styled.div`
 display: flex;
@@ -74,8 +76,12 @@ function LoginScreen() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const userProfile = { username, email };
+    dispatch(updateUserProfile(userProfile) as any);
     console.log(username, email);
   };
 

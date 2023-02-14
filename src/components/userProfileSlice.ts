@@ -12,7 +12,7 @@ interface UserProfile {
 export const updateUserProfile = createAsyncThunk(
   'userProfile/updateUserProfile',
   async (userProfile: UserProfile) => {
-    const response = await axios.post('/adduser', userProfile);
+    const response = await axios.post('http://0.0.0.0:8888/adduser', userProfile);
     return response.data;
   },
 );
