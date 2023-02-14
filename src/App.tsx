@@ -1,13 +1,12 @@
 import './App.css';
-import LandingPage from './components/LandingPage';
-import UserProfileFetch from './components/UserProfileFetch';
+
+import LoginScreen from './components/LoginScreen';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <LandingPage />
-        <UserProfileFetch />
+        <LoginScreen />
       </header>
     </div>
   );

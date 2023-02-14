@@ -13,7 +13,7 @@ export const userSlice = createSlice({
       userName: '',
       userEmail: '',
       userStatus: '',
-      userTasks: 'default tasks',
+      userTasks: [],
     },
     isNewUser: true,
     displayedContent: 'user login',
@@ -40,6 +40,15 @@ export const userSlice = createSlice({
     updateNewUserStatus(state, action) {
       state.isNewUser = action.payload;
     },
+    udateUserTask(state, action) {
+      state.fetchedUserProfile.userTasks = action.payload;
+    },
+    editUserTask(state, action) {
+      state.fetchedUserProfile.userTasks = action.payload;
+    },
+    deleteUserTask(state, action) {
+      state.fetchedUserProfile.userTasks = action.payload;
+    },
   },
 });
 
@@ -49,6 +58,9 @@ export const {
   updateUserEmail,
   updateFetchedUserProfile,
   updateNewUserStatus,
+  udateUserTask,
+  editUserTask,
+  deleteUserTask,
 } = userSlice.actions;
 
 // selectors
