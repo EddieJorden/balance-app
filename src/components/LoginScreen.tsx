@@ -82,7 +82,6 @@ function LoginScreen() {
     event.preventDefault();
     const userProfile = { username, email };
     dispatch(updateUserProfile(userProfile) as any);
-    console.log(username, email);
   };
 
   return (

@@ -21,6 +21,7 @@ const userProfileSlice = createSlice({
   name: 'userProfile',
   initialState: {
     userProfile: {} as UserProfile,
+    isLoggedIn: false,
     isLoading: false,
     error: null,
   },
@@ -30,7 +31,9 @@ const userProfileSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(updateUserProfile.pending, (state) => ({ ...state, isLoading: true }));
     // eslint-disable-next-line max-len
-    builder.addCase(updateUserProfile.fulfilled, (state, action) => ({ ...state, userProfile: action.payload, isLoading: false }));
+    builder.addCase(updateUserProfile.fulfilled, (state, action) => ({
+      ...state, userProfile: action.payload, isLoading: false, isLoggedIn: true,
+    }));
     // eslint-disable-next-line max-len
     builder.addCase(updateUserProfile.rejected, (state, action) => {
       // eslint-disable-next-line no-param-reassign
@@ -40,6 +43,9 @@ const userProfileSlice = createSlice({
     });
   },
 });
+
+export const selectUserProfile = (state: any) => state.userProfileSlice;
+export const selectLoginStatus = (state: any) => state.userProfileSlice.isLoggedIn;
 
 export const { clearError } = userProfileSlice.actions;
 export default userProfileSlice.reducer;
