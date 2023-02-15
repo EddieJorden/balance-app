@@ -1,8 +1,8 @@
 import {
   createAsyncThunk, createSlice,
 } from '@reduxjs/toolkit';
-
 import axios from 'axios';
+import { prefix } from './utils';
 
 interface UserProfile {
   username: string;
@@ -12,7 +12,7 @@ interface UserProfile {
 export const updateUserProfile = createAsyncThunk(
   'userProfile/updateUserProfile',
   async (userProfile: UserProfile) => {
-    const response = await axios.post('http://0.0.0.0:8888/adduser', userProfile);
+    const response = await axios.post(`${prefix}/adduser`, userProfile);
     return response.data;
   },
 );
