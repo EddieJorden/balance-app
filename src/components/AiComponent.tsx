@@ -71,7 +71,7 @@ function AiComponent() {
 
   return (
     <div>
-      <div>Ask Eddie</div>
+      <div>Ask Eddie Anything</div>
       <ChatMessages ref={chatBoxRef}>
         {messages.map((message) => (
           <div key={message.id} style={{ color: message.sender === 'Me' ? 'green' : 'blue' }}>
