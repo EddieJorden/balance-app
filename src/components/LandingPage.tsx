@@ -1,16 +1,21 @@
 import { useSelector } from 'react-redux';
 import Welcome from './Welcome';
-import UserLogin from './UserLogin';
-import { selectIsNewUser } from './userSlice';
+// import UserLogin from './UserLogin';
+
 import UserLandingPage from './UserLandingPage';
-import ChatWindow from './AiComponent';
-import { missionStatement, prefix } from './utils';
+// import ChatWindow from './AiComponent';
+// import { missionStatement, prefix } from './utils';
+import { selectLoginStatus, selectUserProfile } from './userProfileSlice';
+import LoginScreen from './LoginScreen';
 
 function contentToDisplay() {
-  const isNewUser = useSelector(selectIsNewUser);
-  const apiUrl = `${prefix}/fetch-chatgpt-response`;
+  const isLoggedIn = useSelector(selectLoginStatus);
+  const userProfile = useSelector(selectUserProfile);
+  console.log('isLoggedIn', isLoggedIn);
+  console.log('userProfile', userProfile);
+  // const apiUrl = `${prefix}/fetch-chatgpt-response`;
 
-  if (isNewUser === false) {
+  if (isLoggedIn === false) {
     return (
       <div>
         <UserLandingPage />
@@ -19,17 +24,24 @@ function contentToDisplay() {
   }
   return (
     <div>
-      <div style={{ margin: '23px' }}>
+      <div>
+        <LoginScreen />
+      </div>
+      {/* <div style={{ margin: '23px' }}>
         {missionStatement}
       </div>
       <ChatWindow apiUrl={apiUrl} />
       <div />
-      <UserLogin />
+      <UserLogin /> */}
     </div>
   );
 }
 
 function LandingPage() {
+  const isLoggedIn = useSelector(selectLoginStatus);
+  const userProfile = useSelector(selectUserProfile);
+  console.log('isLoggedIn', isLoggedIn);
+  console.log('userProfile', userProfile);
   return (
     <div>
       <Welcome />

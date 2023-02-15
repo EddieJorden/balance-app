@@ -34,8 +34,8 @@ function UserFinances() {
     const newSavings = currentSavings + monthlySavings;
     const newSavingsWithInterest = newSavings + ((newSavings * (investmentReturn / 100)) / 12);
     const newMonths = months + 1;
-    console.log('newSavings', newSavingsWithInterest);
-    console.log(investmentReturn);
+    // console.log('newSavings', newSavingsWithInterest);
+    // console.log(investmentReturn);
     return monthsTillRetirement(newSavingsWithInterest, newMonths);
   };
 

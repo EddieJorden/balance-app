@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { debounce } from 'lodash';
 import { useState, ChangeEvent } from 'react';
 import StyledContainer from './ComponentContainer';
+import Task from './TaskComponent';
 import {
   selectUserTasks,
   selectFetchedUserProfileName,
@@ -10,7 +11,7 @@ import {
   selectFetchedUserProfileEmail,
   // selectUserEmail,
 } from './userSlice';
-import { FormInput, FormSubmitButton } from './utils';
+import { FormInput, FormSubmitButton, prefix } from './utils';
 
 function UserTasks() {
   const [enteredTask, setEnteredTask] = useState('default task');
@@ -41,7 +42,7 @@ function UserTasks() {
   const handleClick = () => {
     // updateUserNameAndEmail();
 
-    const url = `https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
+    const url = `${prefix}/createNewTask?enteredProfileName=${userName}&enteredProfileEmail=${userEmail}&enteredTask=${enteredTask}`;
     fetch(url, {
       method: 'POST',
       headers: {
@@ -73,6 +74,7 @@ function UserTasks() {
       />
       <FormSubmitButton buttonText="Submit" onClickFunction={handleClick} />
       <div>{userTasks}</div>
+      <Task task="test task" />
     </StyledContainer>
   );
 }
