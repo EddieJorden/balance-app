@@ -3,24 +3,17 @@ import StyledContainer from './ComponentContainer';
 
 function UserFinances() {
   const [monthlyIncome, setMonthlyIncome] = useState(10000);
-  console.log('monthlyIncome in state', monthlyIncome);
   const [monthlyExpenses, setMonthlyExpenses] = useState(4500);
   const monthlySavings = monthlyIncome - monthlyExpenses;
   const [investmentReturn, setInvestMentReturn] = useState(5);
-  console.log('investmentReturn in state', investmentReturn);
   const [retirementAmount, setRetirementAmount] = useState(2000000);
-  console.log('amount needed to retire', retirementAmount);
 
   const updateMonthlyIncome = (e: any) => {
-    console.log(`monthly income e.target.value $${e.target.value}`);
     setMonthlyIncome(Number(e.target.value));
   };
-
   const updateMonthlyExpenses = (e: any) => {
-    console.log(`monthly expenses $${e.target.value}`);
     setMonthlyExpenses(Number(e.target.value));
-  };
-  const updateRetirementAmount = (e: any) => {
+  }; const updateRetirementAmount = (e: any) => {
     setRetirementAmount(Number(e.target.value));
   };
 
@@ -34,19 +27,9 @@ function UserFinances() {
     const newSavings = currentSavings + monthlySavings;
     const newSavingsWithInterest = newSavings + ((newSavings * (investmentReturn / 100)) / 12);
     const newMonths = months + 1;
-    // console.log('newSavings', newSavingsWithInterest);
-    // console.log(investmentReturn);
+
     return monthsTillRetirement(newSavingsWithInterest, newMonths);
   };
-
-  // const monthsTillRetirement: any = () => {
-  //   let currentSavings = 0;
-  //   let currentMonths = 0;
-  //   currentMonths += 1;
-  //   currentSavings += monthlySavings + (monthlySavings * (investmentReturn / 100));
-
-  //   return `${currentMonths} months with ${currentSavings} savings`;
-  // };
 
   return (
     <StyledContainer>
