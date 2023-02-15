@@ -44,7 +44,7 @@ const userProfileSlice = createSlice({
   },
 });
 
-export const selectUserProfile = (state: any) => state.userProfileSlice;
+export const selectUserProfile = (state: any) => state.userProfileSlice.userProfile;
 export const selectLoginStatus = (state: any) => state.userProfileSlice.isLoggedIn;
 
 export const { clearError } = userProfileSlice.actions;

@@ -1,13 +1,9 @@
-import UserFinances from './UserFinances';
-import UserProfile from './UserProfile';
-import UserTasks from './UserTasks';
+import AiComponent from './AiComponent';
 
 function UserLandingPage() {
   return (
     <div>
-      <UserProfile />
-      <UserFinances />
-      <UserTasks />
+      <AiComponent />
     </div>
   );
 }

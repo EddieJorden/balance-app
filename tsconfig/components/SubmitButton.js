@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // import { useDispatch } from 'react-redux';
 // import styled from 'styled-components';
 // import { updateUserName, updateUserEmail } from './userSlice';

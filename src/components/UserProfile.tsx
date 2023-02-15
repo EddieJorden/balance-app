@@ -1,13 +1,9 @@
 import { useSelector } from 'react-redux';
-import {
-  selectFetchedUserProfileEmail,
-  selectFetchedUserProfileName,
-} from './userSlice';
+import { selectUserProfile } from './userProfileSlice';
 import StyledContainer from './ComponentContainer';
 
 function UserProfile() {
-  const userName = useSelector(selectFetchedUserProfileName);
-  const userEmail = useSelector(selectFetchedUserProfileEmail);
+  const { username, email } = useSelector(selectUserProfile).user;
 
   return (
     <div>
@@ -18,12 +14,12 @@ function UserProfile() {
           <div style={{ fontWeight: 'bold' }}>
             Name:
             <span style={{ fontWeight: 'normal' }}>
-              {` ${userName}` || 'loading...'}
+              {` ${username}` || 'loading...'}
             </span>
           </div>
           <div style={{ fontWeight: 'bold' }}>
             Email:
-            <span style={{ fontWeight: 'normal' }}>{` ${userEmail}` || 'loading...'}</span>
+            <span style={{ fontWeight: 'normal' }}>{` ${email}` || 'loading...'}</span>
           </div>
           <div />
         </div>
