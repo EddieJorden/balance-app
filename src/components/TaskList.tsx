@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootState, AppDispatch } from '../store';
-import { Task, fetchTasks } from './tasksSlice';
+import { Task, fetchTasks, deleteTask } from './tasksSlice';
 
 function TaskList() {
   const dispatch: AppDispatch = useDispatch();
   const userId = 17;
+  const taskId = 4;
 
   useEffect(() => {
     dispatch(fetchTasks(userId));

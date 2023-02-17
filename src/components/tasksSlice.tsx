@@ -37,7 +37,17 @@ export const addTask = createAsyncThunk('tasks/addTask', async (data: {
   taskPriority: string;
   taskStatus: string;
 }) => {
-  const response = await axios.post(`/users/${data.userId}/tasks`, data);
+  const response = await axios.post(`${prefix}/users/${data.userId}/tasks`, data);
+  console.log('response.data', response.data);
+  return response.data;
+});
+
+export const deleteTask = createAsyncThunk('tasks/deleteTask', async (data: {
+  userId: number;
+  taskId: number;
+}) => {
+  const response = await axios.post(`${prefix}/users/${data.userId}/tasks/${data.taskId}/delete`);
+  console.log('response', response.data);
   return response.data;
 });
 
