@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 // live url
-export const prefix = 'https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app';
+// export const prefix = 'https://eddiejorden-tech-balance-back-end-main-kposozymga-wm.a.run.app';
 
 // local url
-// export const prefix = 'http://localhost:8888';
+export const prefix = 'http://localhost:8888';
 
 // export const missionStatement = 'Behold this mission that Balance App has set out:
 // To ignite a revolution that will bring about a transformation of how we live, work, and

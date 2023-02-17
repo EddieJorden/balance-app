@@ -8,7 +8,7 @@ import LoginScreen from './LoginScreen';
 function contentToDisplay() {
   const isLoggedIn = useSelector(selectLoginStatus);
 
-  if (isLoggedIn === false) {
+  if (isLoggedIn === true) {
     return (
       <div>
         <UserLandingPage />

@@ -17,11 +17,8 @@ function UserTasks() {
   const [enteredTask, setEnteredTask] = useState('default task');
   const userName = useSelector(selectFetchedUserProfileName);
   const userEmail = useSelector(selectFetchedUserProfileEmail);
-
   const userTasks = useSelector(selectUserTasks);
-
   const dispatch = useDispatch();
-
   const updateEnteredTask = (e: ChangeEvent<HTMLInputElement>) => {
     setEnteredTask(e.target.value);
   };
