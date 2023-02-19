@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import TaskComponent from './TaskComponent';
 
 import { RootState, AppDispatch } from '../store';
-import { Task, fetchTasks, deleteTask } from './tasksSlice';
+import { Task, fetchTasks } from './tasksSlice';
 
 function TaskList() {
   const dispatch: AppDispatch = useDispatch();
   const userId = 17;
-  const taskId = 4;
 
   useEffect(() => {
     dispatch(fetchTasks(userId));
@@ -15,7 +15,7 @@ function TaskList() {
 
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
 
-  console.log(tasks);
+  console.log('tasks', tasks);
 
   if (tasks.length) {
     return (
@@ -24,22 +24,7 @@ function TaskList() {
         <ul className="task-list">
 
           {tasks.map((task: Task) => (
-            <li key={task.id}>
-              <h3>{task.task_name}</h3>
-              <p>{task.task_description}</p>
-              <p>
-                Due Date:
-                {task.task_due_Date}
-              </p>
-              <p>
-                Priority:
-                {task.task_priority}
-              </p>
-              <p>
-                Status:
-                {task.task_status}
-              </p>
-            </li>
+            <TaskComponent key={task.id} task={task} />
           ))}
         </ul>
       </div>
