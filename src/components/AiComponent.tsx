@@ -70,7 +70,7 @@ function AiComponent() {
   };
 
   return (
-    <div>
+    <div style={{ padding: '10px' }}>
       <div>Ask Eddie Anything</div>
       <ChatMessages ref={chatBoxRef}>
         {messages.map((message) => (

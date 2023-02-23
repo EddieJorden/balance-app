@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -10,6 +12,27 @@ const Container = styled.div`
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
+`;
+
+const Label = styled.label`
+  margin-right: 5px;
+  font-weight: bold;
+`;
+
+const Input = styled.input`
+  padding: 5px;
+  margin-right: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  font-size: inherit;
+`;
+
+const TaskInputContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 `;
 
 const Name = styled.h3`
@@ -88,11 +111,51 @@ function TaskComponent({ task }: TaskProps) {
   if (editing) {
     return (
       <Container>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <input type="text" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
-        <input type="text" value={priority} onChange={(e) => setPriority(e.target.value)} />
-        <input type="text" value={status} onChange={(e) => setStatus(e.target.value)} />
+        <TaskInputContainer>
+          <Label htmlFor="task-name">Task Name:</Label>
+          <Input
+            type="text"
+            id="task-name"
+            value={name}
+            onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setName(e.target.value)}
+          />
+        </TaskInputContainer>
+        <TaskInputContainer>
+          <Label htmlFor="task-description">Description:</Label>
+          <Input
+            type="text"
+            id="task-description"
+            value={description}
+            onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setDescription(e.target.value)}
+          />
+        </TaskInputContainer>
+        <TaskInputContainer>
+          <Label htmlFor="task-due-date">Due Date:</Label>
+          <Input
+            type="text"
+            id="task-due-date"
+            value={dueDate}
+            onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setDueDate(e.target.value)}
+          />
+        </TaskInputContainer>
+        <TaskInputContainer>
+          <Label htmlFor="task-priority">Priority:</Label>
+          <Input
+            type="text"
+            id="task-priority"
+            value={priority}
+            onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setPriority(e.target.value)}
+          />
+        </TaskInputContainer>
+        <TaskInputContainer>
+          <Label htmlFor="task-status">Status:</Label>
+          <Input
+            type="text"
+            id="task-status"
+            value={status}
+            onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setStatus(e.target.value)}
+          />
+        </TaskInputContainer>
         <Button onClick={handleSave}>Save</Button>
       </Container>
     );

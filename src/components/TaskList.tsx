@@ -1,11 +1,32 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import TaskComponent from './TaskComponent';
 
 import { RootState, AppDispatch } from '../store';
 import { Task, fetchTasks, addTask } from './tasksSlice';
 import { selectUserProfile } from './userProfileSlice';
+
+const StyledTaskList = styled.div`
+
+
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00509d;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: #1a6eb1;
+    }
+  }
+
+`;
 
 function TaskList() {
   const dispatch: AppDispatch = useDispatch();
@@ -35,26 +56,26 @@ function TaskList() {
 
   if (tasks.length) {
     return (
-      <div>
+      <StyledTaskList>
         <h2>Tasks</h2>
         <button type="button" onClick={handleCreateTask}>Add New Task</button>
-        <ul className="task-list">
+        <div>
           {tasks?.map((task: Task) => (
             <TaskComponent key={task.id} task={task} />
           ))}
-        </ul>
-      </div>
+        </div>
+      </StyledTaskList>
     );
   }
 
   return (
-    <div>
+    <StyledTaskList>
       <h2>Tasks</h2>
-      <ul className="task-list">
+      <ul>
         <li>No tasks</li>
         <button type="button" onClick={handleCreateTask}>Add New Task</button>
       </ul>
-    </div>
+    </StyledTaskList>
   );
 }
 
