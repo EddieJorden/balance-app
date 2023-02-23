@@ -4,40 +4,41 @@ import { useDispatch, useSelector } from 'react-redux';
 import TaskComponent from './TaskComponent';
 
 import { RootState, AppDispatch } from '../store';
-import { Task, fetchTasks } from './tasksSlice';
+import { Task, fetchTasks, addTask } from './tasksSlice';
 
 function TaskList() {
   const dispatch: AppDispatch = useDispatch();
   const userId = 17;
 
+  const handleCreateTask = async () => {
+    const data = {
+      userId,
+      taskName: 'New Task',
+      taskDescription: 'New Task Description',
+      taskDueDate: '2021-10-10',
+      taskPriority: 'High',
+      taskStatus: 'Not Started',
+    };
+    try {
+      await dispatch(addTask(data));
+      dispatch(fetchTasks(userId));
+    } catch (error) {
+      console.log('Error adding task:', error);
+    }
+  };
   useEffect(() => {
     dispatch(fetchTasks(userId));
-  }, [dispatch]);
+  }, []);
 
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
-
-  console.log('tasks', tasks);
 
   if (tasks.length) {
     return (
       <div>
         <h2>Tasks</h2>
-        <form>
-          <label htmlFor="taskName">Task Name</label>
-          <input type="text" id="taskName" name="taskName" />
-          <label htmlFor="taskDescription">Task Description</label>
-          <input type="text" id="taskDescription" name="taskDescription" />
-          <label htmlFor="taskDueDate">Task Due Date</label>
-          <input type="text" id="taskDueDate" name="taskDueDate" />
-          <label htmlFor="taskPriority">Task Priority</label>
-          <input type="text" id="taskPriority" name="taskPriority" />
-          <label htmlFor="taskStatus">Task Status</label>
-          <input type="text" id="taskStatus" name="taskStatus" />
-          <button type="submit">Create Task</button>
-        </form>
-
+        <button type="button" onClick={handleCreateTask}>Add New Task</button>
         <ul className="task-list">
-          {tasks.map((task: Task) => (
+          {tasks?.map((task: Task) => (
             <TaskComponent key={task.id} task={task} />
           ))}
         </ul>
@@ -50,6 +51,7 @@ function TaskList() {
       <h2>Tasks</h2>
       <ul className="task-list">
         <li>No tasks</li>
+        <button type="button" onClick={handleCreateTask}>Add New Task</button>
       </ul>
     </div>
   );

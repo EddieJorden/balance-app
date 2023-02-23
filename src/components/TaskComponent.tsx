@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { AsyncThunkAction } from '@reduxjs/toolkit';
-import { deleteTask, updateTask } from './tasksSlice';
+import { deleteTask, fetchTasks, updateTask } from './tasksSlice';
 import { AppDispatch } from '../store';
 
 const Container = styled.div`
@@ -68,6 +68,7 @@ function TaskComponent({ task }: TaskProps) {
       taskId: task.id,
     });
     dispatch(deleteTaskAction);
+    dispatch(fetchTasks(task.user_id));
   };
 
   const handleSave = () => {

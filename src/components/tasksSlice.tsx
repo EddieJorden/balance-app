@@ -39,7 +39,6 @@ export const addTask = createAsyncThunk('tasks/addTask', async (data: {
   taskStatus: string;
 }) => {
   const response = await axios.post(`${prefix}/users/${data.userId}/tasks`, data);
-  console.log('response.data', response.data);
   return response.data;
 });
 
@@ -49,7 +48,6 @@ export const deleteTask = createAsyncThunk('tasks/deleteTask', async (data: {
 
 }) => {
   const response = await axios.post(`${prefix}/users/${data.userId}/tasks/${data.taskId}/delete`);
-  console.log('response', response.data);
   return response.data;
 });
 
@@ -89,7 +87,6 @@ const tasksSlice = createSlice({
       })
       .addCase(fetchTasks.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log('fetchTasks fulfilled', action.payload);
         state.tasks = action.payload;
       })
       .addCase(fetchTasks.rejected, (state, action) => {
@@ -101,7 +98,7 @@ const tasksSlice = createSlice({
       })
       .addCase(addTask.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.tasks.push(action.payload);
+        state.tasks = action.payload;
       })
       .addCase(addTask.rejected, (state, action) => {
         state.status = 'failed';
@@ -122,6 +119,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export const selectTasks = (state: any) => state.tasks;
+export const selectTasks = (state: any) => state.tasks.tasks;
 
 export default tasksSlice.reducer;
