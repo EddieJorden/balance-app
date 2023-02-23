@@ -1,5 +1,5 @@
 import {
-  createAsyncThunk, createSlice,
+  createAsyncThunk, createSlice, SerializedError,
 } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { prefix } from './utils';
@@ -13,9 +13,7 @@ export const updateUserProfile = createAsyncThunk(
   'userProfile/updateUserProfile',
   async (userProfile: UserProfile) => {
     const { username, email } = userProfile;
-
     const response = await axios.post(`${prefix}/adduser`, { username, email });
-
     return response.data;
   },
 );
@@ -26,24 +24,19 @@ const userProfileSlice = createSlice({
     userProfile: {} as UserProfile,
     isLoggedIn: false,
     isLoading: false,
-    error: null,
+    error: null as SerializedError | null,
   },
   reducers: {
     clearError: (state) => ({ ...state, error: null }),
   },
   extraReducers: (builder) => {
     builder.addCase(updateUserProfile.pending, (state) => ({ ...state, isLoading: true }));
-    // eslint-disable-next-line max-len
     builder.addCase(updateUserProfile.fulfilled, (state, action) => ({
       ...state, userProfile: action.payload, isLoading: false, isLoggedIn: true,
     }));
-    // eslint-disable-next-line max-len
-    builder.addCase(updateUserProfile.rejected, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
-      // @ts-ignore
-      // eslint-disable-next-line no-param-reassign
-      state = { ...state, error: action.error, isLoading: false };
-    });
+    builder.addCase(updateUserProfile.rejected, (state, action) => ({
+      ...state, error: action.error, isLoading: false,
+    }));
   },
 });
 
