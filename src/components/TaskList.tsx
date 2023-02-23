@@ -5,10 +5,11 @@ import TaskComponent from './TaskComponent';
 
 import { RootState, AppDispatch } from '../store';
 import { Task, fetchTasks, addTask } from './tasksSlice';
+import { selectUserProfile } from './userProfileSlice';
 
 function TaskList() {
   const dispatch: AppDispatch = useDispatch();
-  const userId = 17;
+  const userId = useSelector(selectUserProfile).id;
 
   const handleCreateTask = async () => {
     const data = {
