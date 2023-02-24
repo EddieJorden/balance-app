@@ -12,6 +12,7 @@ const Container = styled.div`
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
+  font-size: 12px;
 `;
 
 const Label = styled.label`
@@ -25,7 +26,7 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #ccc;
   outline: none;
-  font-size: inherit;
+  font-size: 12px;
 `;
 
 const TaskInputContainer = styled.div`
@@ -34,6 +35,11 @@ const TaskInputContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
+
+const TaskLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+  `;
 
 const Name = styled.h3`
   margin: 0 0 10px 0;
@@ -167,11 +173,27 @@ function TaskComponent({ task }: TaskProps) {
 
   return (
     <Container>
-      <Name>{task.task_name}</Name>
-      <Description>{task.task_description}</Description>
-      <DueDate>{formattedTaskDueDate}</DueDate>
-      <Priority>{task.task_priority}</Priority>
-      <Status>{task.task_status}</Status>
+      <TaskLine>
+        Task Name
+        <Name>{task.task_name}</Name>
+      </TaskLine>
+      <TaskLine>
+        Description
+        <Description>{task.task_description}</Description>
+      </TaskLine>
+      <TaskLine>
+        Due Date
+        <DueDate>{formattedTaskDueDate}</DueDate>
+      </TaskLine>
+      <TaskLine>
+        Priority
+        <Priority>{task.task_priority}</Priority>
+      </TaskLine>
+      <TaskLine>
+        Status
+        <Status>{task.task_status}</Status>
+      </TaskLine>
+
       <Button onClick={() => setEditing(true)}>Edit</Button>
       <Button onClick={handleDelete}>Delete</Button>
     </Container>
