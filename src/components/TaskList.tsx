@@ -35,9 +35,9 @@ function TaskList() {
   const handleCreateTask = async () => {
     const data = {
       userId,
-      taskName: 'New Task',
-      taskDescription: 'New Task Description',
-      taskDueDate: '2021-10-10',
+      taskName: 'Task Name',
+      taskDescription: 'Task Description',
+      taskDueDate: 'due date',
       taskPriority: 'High',
       taskStatus: 'Not Started',
     };

@@ -72,10 +72,13 @@ interface TaskProps {
 }
 
 function TaskComponent({ task }: TaskProps) {
+  const taskDueDate = new Date(task.task_due_date.replace(/-/g, '/').replace(/T.+/, ''));
+  const formattedTaskDueDate = taskDueDate.toDateString();
+
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(task.task_name);
   const [description, setDescription] = useState(task.task_description);
-  const [dueDate, setDueDate] = useState(task.task_due_date);
+  const [dueDate, setDueDate] = useState(formattedTaskDueDate);
   const [priority, setPriority] = useState(task.task_priority);
   const [status, setStatus] = useState(task.task_status);
 
@@ -96,6 +99,7 @@ function TaskComponent({ task }: TaskProps) {
 
   const handleSave = () => {
     // Update task in Redux store
+
     dispatch(updateTask({
       userId: task.user_id,
       taskId: task.id,
@@ -132,7 +136,7 @@ function TaskComponent({ task }: TaskProps) {
         <TaskInputContainer>
           <Label htmlFor="task-due-date">Due Date:</Label>
           <Input
-            type="text"
+            type="date"
             id="task-due-date"
             value={dueDate}
             onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setDueDate(e.target.value)}
@@ -165,7 +169,7 @@ function TaskComponent({ task }: TaskProps) {
     <Container>
       <Name>{task.task_name}</Name>
       <Description>{task.task_description}</Description>
-      <DueDate>{task.task_due_date}</DueDate>
+      <DueDate>{formattedTaskDueDate}</DueDate>
       <Priority>{task.task_priority}</Priority>
       <Status>{task.task_status}</Status>
       <Button onClick={() => setEditing(true)}>Edit</Button>
