@@ -17,7 +17,7 @@ const StyledTaskList = styled.div`
     border-radius: 5px;
     background-color: #00509d;
     color: white;
-    font-size: 1.2rem;
+    font-size: 12px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 
@@ -35,9 +35,9 @@ function TaskList() {
   const handleCreateTask = async () => {
     const data = {
       userId,
-      taskName: 'New Task',
-      taskDescription: 'New Task Description',
-      taskDueDate: '2021-10-10',
+      taskName: 'Task Name',
+      taskDescription: 'Task Description',
+      taskDueDate: 'due date',
       taskPriority: 'High',
       taskStatus: 'Not Started',
     };
@@ -58,12 +58,12 @@ function TaskList() {
     return (
       <StyledTaskList>
         <h2>Tasks</h2>
-        <button type="button" onClick={handleCreateTask}>Add New Task</button>
         <div>
           {tasks?.map((task: Task) => (
             <TaskComponent key={task.id} task={task} />
           ))}
         </div>
+        <button type="button" onClick={handleCreateTask}>Add New Task</button>
       </StyledTaskList>
     );
   }

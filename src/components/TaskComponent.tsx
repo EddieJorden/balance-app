@@ -12,6 +12,7 @@ const Container = styled.div`
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
+  font-size: 12px;
 `;
 
 const Label = styled.label`
@@ -25,7 +26,7 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid #ccc;
   outline: none;
-  font-size: inherit;
+  font-size: 12px;
 `;
 
 const TaskInputContainer = styled.div`
@@ -34,6 +35,11 @@ const TaskInputContainer = styled.div`
   align-items: center;
   margin-bottom: 10px;
 `;
+
+const TaskLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+  `;
 
 const Name = styled.h3`
   margin: 0 0 10px 0;
@@ -72,10 +78,13 @@ interface TaskProps {
 }
 
 function TaskComponent({ task }: TaskProps) {
+  const taskDueDate = new Date(task.task_due_date.replace(/-/g, '/').replace(/T.+/, ''));
+  const formattedTaskDueDate = taskDueDate.toDateString();
+
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(task.task_name);
   const [description, setDescription] = useState(task.task_description);
-  const [dueDate, setDueDate] = useState(task.task_due_date);
+  const [dueDate, setDueDate] = useState(formattedTaskDueDate);
   const [priority, setPriority] = useState(task.task_priority);
   const [status, setStatus] = useState(task.task_status);
 
@@ -96,6 +105,7 @@ function TaskComponent({ task }: TaskProps) {
 
   const handleSave = () => {
     // Update task in Redux store
+
     dispatch(updateTask({
       userId: task.user_id,
       taskId: task.id,
@@ -132,7 +142,7 @@ function TaskComponent({ task }: TaskProps) {
         <TaskInputContainer>
           <Label htmlFor="task-due-date">Due Date:</Label>
           <Input
-            type="text"
+            type="date"
             id="task-due-date"
             value={dueDate}
             onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setDueDate(e.target.value)}
@@ -163,11 +173,27 @@ function TaskComponent({ task }: TaskProps) {
 
   return (
     <Container>
-      <Name>{task.task_name}</Name>
-      <Description>{task.task_description}</Description>
-      <DueDate>{task.task_due_date}</DueDate>
-      <Priority>{task.task_priority}</Priority>
-      <Status>{task.task_status}</Status>
+      <TaskLine>
+        Task Name
+        <Name>{task.task_name}</Name>
+      </TaskLine>
+      <TaskLine>
+        Description
+        <Description>{task.task_description}</Description>
+      </TaskLine>
+      <TaskLine>
+        Due Date
+        <DueDate>{formattedTaskDueDate}</DueDate>
+      </TaskLine>
+      <TaskLine>
+        Priority
+        <Priority>{task.task_priority}</Priority>
+      </TaskLine>
+      <TaskLine>
+        Status
+        <Status>{task.task_status}</Status>
+      </TaskLine>
+
       <Button onClick={() => setEditing(true)}>Edit</Button>
       <Button onClick={handleDelete}>Delete</Button>
     </Container>
