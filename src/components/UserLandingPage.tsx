@@ -6,6 +6,10 @@ import BalanceRating from './BalanceRating';
 function UserLandingPage() {
   return (
     <div>
+      <TaskList />
+      <AiComponent />
+      <h1 style={{ color: 'red' }}>currently in development</h1>
+      <p>these components are currently being worked on and will be available soon</p>
       <TimeValueCalculator
         averageTimeInYears={75}
         hoursSpentWorking={8}
@@ -16,8 +20,6 @@ function UserLandingPage() {
         nonEssentialExpensesPerMonth={500}
       />
       <BalanceRating />
-      <TaskList />
-      <AiComponent />
     </div>
   );
 }
