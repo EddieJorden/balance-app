@@ -5,6 +5,7 @@ import './App.css';
 // import { selectLoginStatus } from './components/userProfileSlice';
 import TimeValueCalculator from './components/TimeValueCalculator';
 // import LandingPage from './components/LandingPage';
+import BalanceRating from './components/BalanceRating';
 
 function App() {
   // const isLoggedIn = useSelector(selectLoginStatus);
@@ -22,6 +23,8 @@ function App() {
           essentialExpensesPerMonth={1000}
           nonEssentialExpensesPerMonth={500}
         />
+
+        <BalanceRating />
 
         {/* <div>
           {isLoggedIn ? (

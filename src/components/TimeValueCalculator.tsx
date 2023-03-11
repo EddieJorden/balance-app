@@ -32,11 +32,16 @@ class TimeValueCalculator extends React.Component<Props, State> {
     const {
       averageTimeInYears, hoursSpentWorking, hoursSpentOnNecessities, freeTimePerDay, essentialExpensesPerMonth, nonEssentialExpensesPerMonth, compensationPerHour,
     } = this.props;
+    console.log('averageTimeInYears', averageTimeInYears);
+    console.log('freeTimePerDay', freeTimePerDay);
+    console.log('nonEssentialExpensesPerMonth', nonEssentialExpensesPerMonth);
 
     const totalNecessityTimePerYear = (hoursSpentOnNecessities * 365) - (essentialExpensesPerMonth / 30);
     const totalWorkTimePerYear = hoursSpentWorking * 365;
     const totalFreeTimePerYear = ((24 - hoursSpentOnNecessities) - hoursSpentWorking) * 365;
-    const totalCompensationPerYear = (totalWorkTimePerYear * compensationPerHour) - (essentialExpensesPerMonth + nonEssentialExpensesPerMonth);
+    console.log('totalFreeTimePerYear', totalFreeTimePerYear);
+    const totalCompensationPerYear = (totalWorkTimePerYear * compensationPerHour);
+    console.log('totalCompensationPerYear', totalCompensationPerYear);
 
     const totalValuePerYear = (totalFreeTimePerYear * compensationPerHour) + totalCompensationPerYear;
     const totalHoursPerYear = (totalNecessityTimePerYear + totalWorkTimePerYear + totalFreeTimePerYear);
@@ -49,7 +54,7 @@ class TimeValueCalculator extends React.Component<Props, State> {
     const { freeTimeValuePerHour } = this.state;
     const { compensationPerHour } = this.props;
 
-    const freeTimeValuePerYear = freeTimeValuePerHour * 24 * 365;
+    const freeTimeValuePerYear = freeTimeValuePerHour * 6 * 365;
     const totalIncomePerHour = freeTimeValuePerHour + compensationPerHour;
     const totalIncomePerYear = totalIncomePerHour * 24 * 365;
 
@@ -68,7 +73,7 @@ class TimeValueCalculator extends React.Component<Props, State> {
           {totalIncomePerHour.toFixed(2)}
         </h2>
         <h2>
-          Annual Income: $
+          Annual Income including free time value: $
           {totalIncomePerYear.toFixed(2)}
         </h2>
       </div>
