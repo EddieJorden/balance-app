@@ -3,7 +3,8 @@ import Welcome from './Welcome';
 
 import UserLandingPage from './UserLandingPage';
 import { selectLoginStatus } from './userProfileSlice';
-import LoginScreen from './LoginScreen';
+// import LoginScreen from './LoginScreen';
+import TimeValueCalculator from './TimeValueCalculator';
 
 function contentToDisplay() {
   const isLoggedIn = useSelector(selectLoginStatus);
@@ -17,9 +18,7 @@ function contentToDisplay() {
   }
   return (
     <div>
-      <div>
-        <LoginScreen />
-      </div>
+      <div />
     </div>
   );
 }
