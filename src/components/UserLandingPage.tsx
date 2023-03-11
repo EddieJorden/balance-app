@@ -1,6 +1,7 @@
 import AiComponent from './AiComponent';
 import TaskList from './TaskList';
 import TimeValueCalculator from './TimeValueCalculator';
+import BalanceRating from './BalanceRating';
 
 function UserLandingPage() {
   return (
@@ -14,7 +15,7 @@ function UserLandingPage() {
         essentialExpensesPerMonth={1000}
         nonEssentialExpensesPerMonth={500}
       />
-
+      <BalanceRating />
       <TaskList />
       <AiComponent />
     </div>
